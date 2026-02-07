@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotte - Post Manager</title>
+    <title>Post Manager</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -121,7 +121,6 @@
             color: white;
         }
         
-        /* Tabs */
         .tabs {
             display: flex;
             border-bottom: 1px solid var(--border-color);
@@ -207,13 +206,7 @@
 <body>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h1 style="margin: 0;">Post Manager</h1>
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; font-weight: 600;">
-                <input type="checkbox" id="show-posted-toggle" onchange="toggleShowPosted()" style="width: 16px; height: 16px;">
-                <span>Show Posted</span>
-            </label>
-            <span onclick="toggleDarkMode()" id="theme-toggle" style="cursor: pointer; font-size: 18px;">🌙</span>
-        </div>
+        <span onclick="toggleDarkMode()" id="theme-toggle" style="cursor: pointer; font-size: 18px;">🌙</span>
     </div>
     
     <div id="posts"></div>
@@ -221,6 +214,7 @@
     <div class="toast" id="toast">Copied!</div>
     
     <script>
+        // Posts array - newest first
         const posts = [{
             date: '2026-02-07',
             trend: 'Saturday Night',
@@ -241,50 +235,57 @@ Let's just say the dress didn't stay on long 😏
 
 And things only got more interesting from there 💋`,
         }];
-        
+
         function showToast(msg) {
             const t = document.getElementById('toast');
             t.textContent = msg;
             t.classList.add('show');
             setTimeout(() => t.classList.remove('show'), 2000);
         }
-        
+
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 showToast('Copied to clipboard!');
             });
         }
-        
+
         function openTab(postId, tabName) {
-            // Hide all tabs for this post
             document.querySelectorAll(`#post-${postId} .tab-content`).forEach(t => t.classList.remove('active'));
             document.querySelectorAll(`#post-${postId} .tab`).forEach(t => t.classList.remove('active'));
-            
-            // Show selected tab
             document.getElementById(`tab-${postId}-${tabName}`).classList.add('active');
             event.target.classList.add('active');
         }
-        
+
         function postToX(caption, postId) {
             const encoded = encodeURIComponent(caption.substring(0, 280));
             window.open(`https://twitter.com/intent/tweet?text=${encoded}`, '_blank');
-            // Auto-check as posted
-            setTimeout(() => {
-                document.getElementById(`posted-${postId}`).checked = true;
-                togglePosted(postId);
-            }, 1000);
         }
-        
+
         function postToInstagram(caption, postId) {
             copyText(caption);
             window.open('https://instagram.com', '_blank');
-            // Auto-check as posted
-            setTimeout(() => {
-                document.getElementById(`posted-${postId}`).checked = true;
-                togglePosted(postId);
-            }, 1000);
         }
-        
+
+        async function downloadImage(url, filename, btnElement) {
+            try {
+                showToast('Downloading...');
+                const response = await fetch(url);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+                showToast('Image saved!');
+            } catch (e) {
+                showToast('Download failed - try right-click save');
+                window.open(url, '_blank');
+            }
+        }
+
         function toggleDarkMode() {
             const body = document.body;
             const toggle = document.getElementById('theme-toggle');
@@ -300,7 +301,7 @@ And things only got more interesting from there 💋`,
                 localStorage.setItem('theme', 'dark');
             }
         }
-        
+
         function loadTheme() {
             const savedTheme = localStorage.getItem('theme');
             const toggle = document.getElementById('theme-toggle');
@@ -309,165 +310,14 @@ And things only got more interesting from there 💋`,
                 toggle.textContent = '☀️';
             }
         }
-        
-        function deletePost(postId) {
-            if (confirm('Are you sure you want to delete this post? This will hide it from view.')) {
-                const card = document.getElementById(`post-${postId}`);
-                card.style.display = 'none';
-                localStorage.setItem(`deleted-${postId}`, 'true');
-                showToast('Post hidden from view');
-                
-                // Note: To actually delete from GitHub, manually remove from:
-                // https://github.com/adamfiverr-lab/lotte-viewer/tree/main/images
-            }
-        }
-        
-        async function downloadImage(url, filename, btnElement) {
-            try {
-                showToast('Downloading...');
-                const response = await fetch(url);
-                const blob = await response.blob();
-                const blobUrl = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = blobUrl;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(blobUrl);
-                
-                // Visual feedback - hide button, show text
-                btnElement.style.display = 'none';
-                const savedText = document.createElement('span');
-                savedText.textContent = '✅ Downloaded';
-                savedText.style.color = '#00c853';
-                savedText.style.fontSize = '12px';
-                savedText.style.fontWeight = '600';
-                btnElement.parentNode.insertBefore(savedText, btnElement);
-                showToast('Image saved!');
-                
-                // Store in localStorage using post index
-                const postIndex = btnElement.closest('.post-card').id.replace('post-', '');
-                localStorage.setItem(`saved-${postIndex}`, 'true');
-            } catch (e) {
-                showToast('Download failed - try right-click save');
-                window.open(url, '_blank');
-            }
-        }
-        
-        function togglePosted(postId) {
-            const checkbox = document.getElementById(`posted-${postId}`);
-            const isPosted = checkbox.checked;
-            localStorage.setItem(`posted-${postId}`, isPosted);
-            
-            const card = document.getElementById(`post-${postId}`);
-            card.setAttribute('data-posted', isPosted);
-            
-            if (isPosted) {
-                card.style.opacity = '0.4';
-                showToast('Marked as posted!');
-            } else {
-                card.style.opacity = '1';
-            }
-            
-            // Re-apply filter
-            applyPostedFilter();
-        }
-        
-        function toggleShowPosted() {
-            const showPosted = document.getElementById('show-posted-toggle').checked;
-            localStorage.setItem('showPosted', showPosted);
-            applyPostedFilter();
-        }
-        
-        function applyPostedFilter() {
-            const showPosted = document.getElementById('show-posted-toggle').checked;
-            
-            posts.forEach((post, index) => {
-                const card = document.getElementById(`post-${index}`);
-                const isPosted = card.getAttribute('data-posted') === 'true';
-                
-                if (!showPosted && isPosted) {
-                    card.style.display = 'none';
-                } else {
-                    card.style.display = 'block';
-                }
-            });
-        }
-        
-        function loadPostedStatus() {
-            console.log('Loading posted status for', posts.length, 'posts');
-            posts.forEach((post, index) => {
-                const card = document.getElementById(`post-${index}`);
-                if (!card) {
-                    console.log('Card not found for index', index);
-                    return;
-                }
-                
-                // Check if deleted
-                const isDeleted = localStorage.getItem(`deleted-${index}`) === 'true';
-                console.log('Post', index, 'deleted:', isDeleted);
-                if (isDeleted) {
-                    card.style.display = 'none';
-                    return;
-                }
-                
-                // Check and restore posted status
-                const postedValue = localStorage.getItem(`posted-${index}`);
-                console.log('Post', index, 'posted value:', postedValue);
-                const isPosted = postedValue === 'true';
-                card.setAttribute('data-posted', isPosted);
-                
-                if (isPosted) {
-                    const checkbox = document.getElementById(`posted-${index}`);
-                    console.log('Post', index, 'checkbox found:', !!checkbox);
-                    if (checkbox) {
-                        checkbox.checked = true;
-                        card.style.opacity = '0.4';
-                        console.log('Post', index, 'restored as posted');
-                    }
-                }
-                
-                // Check if image was saved
-                const isSaved = localStorage.getItem(`saved-${index}`) === 'true';
-                if (isSaved) {
-                    const saveBtn = document.querySelector(`#post-${index} button[onclick*="downloadImage"]`);
-                    if (saveBtn) {
-                        saveBtn.style.display = 'none';
-                        const savedText = document.createElement('span');
-                        savedText.textContent = '✅ Downloaded';
-                        savedText.style.color = '#00c853';
-                        savedText.style.fontSize = '12px';
-                        savedText.style.fontWeight = '600';
-                        saveBtn.parentNode.insertBefore(savedText, saveBtn);
-                    }
-                }
-            });
-            
-            // Load filter preference (default: unchecked = hide posted)
-            const showPosted = localStorage.getItem('showPosted');
-            if (showPosted !== null) {
-                document.getElementById('show-posted-toggle').checked = showPosted === 'true';
-            } else {
-                document.getElementById('show-posted-toggle').checked = false;
-            }
-            applyPostedFilter();
-        }
-        
+
         function renderPosts() {
             const container = document.getElementById('posts');
             container.innerHTML = posts.map((post, index) => `
-                <div class="post-card" id="post-${index}" data-posted="false">
+                <div class="post-card" id="post-${index}">
                     <div class="post-header">
                         <span class="post-date">${post.date}</span>
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <button onclick="downloadImage('${post.image}', 'lotte-${post.date}.jpg', this)" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
-                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">
-                                <input type="checkbox" id="posted-${index}" onchange="togglePosted(${index})" style="width: 14px; height: 14px;">
-                                <span>Posted</span>
-                            </label>
-                            <button onclick="deletePost(${index})" style="background: none; border: none; color: #ff4444; font-size: 12px; cursor: pointer; font-weight: 600;">🗑️ Delete</button>
-                        </div>
+                        <button onclick="downloadImage('${post.image}', '${post.filename}', this)" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
                         <span class="post-trend">${post.trend}</span>
                     </div>
                     
@@ -497,19 +347,8 @@ And things only got more interesting from there 💋`,
                 </div>
             `).join('');
         }
-        
+
         renderPosts();
-        
-        // Load posted status after rendering
-        window.addEventListener('load', () => {
-            console.log('Window loaded, restoring states...');
-            setTimeout(() => {
-                loadPostedStatus();
-                applyPostedFilter();
-            }, 500);
-        });
-        
-        // Load saved theme
         loadTheme();
     </script>
 </body>
