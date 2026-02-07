@@ -248,6 +248,26 @@ And neither did I 💋`,
             }, 1000);
         }
         
+        async function downloadImage(url, filename) {
+            try {
+                showToast('Downloading...');
+                const response = await fetch(url);
+                const blob = await response.blob();
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+                showToast('Image saved!');
+            } catch (e) {
+                showToast('Download failed - try right-click save');
+                window.open(url, '_blank');
+            }
+        }
+        
         function togglePosted(postId) {
             const checkbox = document.getElementById(`posted-${postId}`);
             const isPosted = checkbox.checked;
@@ -294,7 +314,7 @@ And neither did I 💋`,
                     </div>
                     
                     <div style="padding: 0 15px 15px; text-align: center;">
-                        <a href="${post.image}" download="lotte-${post.date}.jpg" style="color: #0095f6; text-decoration: none; font-size: 14px; font-weight: 600;">💾 Save Image</a>
+                        <button onclick="downloadImage('${post.image}', 'lotte-${post.date}.jpg')" style="background: none; border: none; color: #0095f6; font-size: 14px; font-weight: 600; cursor: pointer;">💾 Save Image</button>
                     </div>
                     
                     <div style="padding: 0 15px 15px;">
