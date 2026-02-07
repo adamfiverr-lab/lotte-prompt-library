@@ -198,9 +198,11 @@ Who's coming out tonight? 👇
 #SaturdayNight #GirlsNight #WeekendVures #NightOut`,
             fanvue: `Saturday night ready 😈💋
 
-Full set on Fanvue (link in bio)
+Wish you could see what I did after this... 💦
 
-See you there? 💕`
+Let's just say the dress didn't stay on long 😏
+
+Want the full story? You know where to find me 💕`,
         }];
         
         function showToast(msg) {
@@ -226,14 +228,51 @@ See you there? 💕`
             event.target.classList.add('active');
         }
         
-        function postToX(caption) {
+        function postToX(caption, postId) {
             const encoded = encodeURIComponent(caption.substring(0, 280));
             window.open(`https://twitter.com/intent/tweet?text=${encoded}`, '_blank');
+            // Auto-check as posted
+            setTimeout(() => {
+                document.getElementById(`posted-${postId}`).checked = true;
+                togglePosted(postId);
+            }, 1000);
         }
         
-        function postToInstagram(caption) {
+        function postToInstagram(caption, postId) {
             copyText(caption);
             window.open('https://instagram.com', '_blank');
+            // Auto-check as posted
+            setTimeout(() => {
+                document.getElementById(`posted-${postId}`).checked = true;
+                togglePosted(postId);
+            }, 1000);
+        }
+        
+        function togglePosted(postId) {
+            const checkbox = document.getElementById(`posted-${postId}`);
+            const isPosted = checkbox.checked;
+            localStorage.setItem(`posted-${postId}`, isPosted);
+            
+            const card = document.getElementById(`post-${postId}`);
+            if (isPosted) {
+                card.style.opacity = '0.6';
+                showToast('Marked as posted!');
+            } else {
+                card.style.opacity = '1';
+            }
+        }
+        
+        function loadPostedStatus() {
+            posts.forEach((post, index) => {
+                const isPosted = localStorage.getItem(`posted-${index}`) === 'true';
+                if (isPosted) {
+                    const checkbox = document.getElementById(`posted-${index}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        document.getElementById(`post-${index}`).style.opacity = '0.6';
+                    }
+                }
+            });
         }
         
         function renderPosts() {
@@ -250,8 +289,15 @@ See you there? 💕`
                     </div>
                     
                     <div class="action-buttons">
-                        <button class="btn btn-instagram" onclick="postToInstagram(\`${post.instagram.replace(/`/g, '\\`')}\`)">📸 Post to Instagram</button>
-                        <button class="btn btn-x" onclick="postToX(\`${post.instagram.replace(/`/g, '\\`')}\`)">𝕏 Post to X</button>
+                        <button class="btn btn-instagram" onclick="postToInstagram(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">📸 Post to Instagram</button>
+                        <button class="btn btn-x" onclick="postToX(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">𝕏 Post to X</button>
+                    </div>
+                    
+                    <div style="padding: 0 15px 15px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;">
+                            <input type="checkbox" id="posted-${index}" onchange="togglePosted(${index})" style="width: 18px; height: 18px;">
+                            <span>Mark as posted</span>
+                        </label>
                     </div>
                     
                     <div class="tabs">
@@ -273,6 +319,9 @@ See you there? 💕`
         }
         
         renderPosts();
+        
+        // Load posted status after rendering
+        setTimeout(loadPostedStatus, 100);
     </script>
 </body>
 </html>
