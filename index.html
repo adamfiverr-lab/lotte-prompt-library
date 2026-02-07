@@ -248,7 +248,7 @@ And things only got more interesting from there 💋`,
             }, 1000);
         }
         
-        async function downloadImage(url, filename) {
+        async function downloadImage(url, filename, btnElement) {
             try {
                 showToast('Downloading...');
                 const response = await fetch(url);
@@ -261,7 +261,14 @@ And things only got more interesting from there 💋`,
                 a.click();
                 document.body.removeChild(a);
                 window.URL.revokeObjectURL(blobUrl);
+                
+                // Visual feedback - change button
+                btnElement.textContent = '✅ Saved';
+                btnElement.style.color = '#00c853';
                 showToast('Image saved!');
+                
+                // Store in localStorage
+                localStorage.setItem(`saved-${filename}`, 'true');
             } catch (e) {
                 showToast('Download failed - try right-click save');
                 window.open(url, '_blank');
@@ -292,6 +299,16 @@ And things only got more interesting from there 💋`,
                         document.getElementById(`post-${index}`).style.opacity = '0.6';
                     }
                 }
+                
+                // Check if image was saved
+                const isSaved = localStorage.getItem(`saved-lotte-${post.date}.jpg`) === 'true';
+                if (isSaved) {
+                    const saveBtn = document.querySelector(`#post-${index} button[onclick*="downloadImage"]`);
+                    if (saveBtn) {
+                        saveBtn.textContent = '✅ Saved';
+                        saveBtn.style.color = '#00c853';
+                    }
+                }
             });
         }
         
@@ -301,7 +318,7 @@ And things only got more interesting from there 💋`,
                 <div class="post-card" id="post-${index}">
                     <div class="post-header">
                         <span class="post-date">${post.date}</span>
-                        <button onclick="downloadImage('${post.image}', 'lotte-${post.date}.jpg')" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
+                        <button onclick="downloadImage('${post.image}', 'lotte-${post.date}.jpg', this)" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
                         <span class="post-trend">${post.trend}</span>
                     </div>
                     
