@@ -344,8 +344,8 @@ See you there? 💕`
                     </div>
                     
                     <div class="ig-actions" style="padding: 12px 16px; display: flex; gap: 12px;">
-                        <button class="ig-copy-btn" style="flex: 1; background: #e1306c;" onclick="window.open('https://instagram.com', '_blank')">📸 Post to Instagram</button>
-                        <button class="ig-copy-btn" style="flex: 1; background: #000;" onclick="window.open('https://twitter.com', '_blank')">𝕏 Post to X</button>
+                        <button class="ig-copy-btn" style="flex: 1; background: #e1306c;" onclick="copyText(\`${post.instagramCaption}\`); window.open('https://instagram.com', '_blank')">📸 Copy & Open Instagram</button>
+                        <button class="ig-copy-btn" style="flex: 1; background: #000;" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(\`${post.instagramCaption.substring(0, 200)}\`), '_blank')">𝕏 Post to X (Prefilled)</button>
                     </div>
                     
                     <div class="ig-caption">
