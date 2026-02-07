@@ -396,26 +396,35 @@ And things only got more interesting from there 💋`,
         }
         
         function loadPostedStatus() {
+            console.log('Loading posted status for', posts.length, 'posts');
             posts.forEach((post, index) => {
                 const card = document.getElementById(`post-${index}`);
-                if (!card) return;
+                if (!card) {
+                    console.log('Card not found for index', index);
+                    return;
+                }
                 
                 // Check if deleted
                 const isDeleted = localStorage.getItem(`deleted-${index}`) === 'true';
+                console.log('Post', index, 'deleted:', isDeleted);
                 if (isDeleted) {
                     card.style.display = 'none';
                     return;
                 }
                 
                 // Check and restore posted status
-                const isPosted = localStorage.getItem(`posted-${index}`) === 'true';
+                const postedValue = localStorage.getItem(`posted-${index}`);
+                console.log('Post', index, 'posted value:', postedValue);
+                const isPosted = postedValue === 'true';
                 card.setAttribute('data-posted', isPosted);
                 
                 if (isPosted) {
                     const checkbox = document.getElementById(`posted-${index}`);
+                    console.log('Post', index, 'checkbox found:', !!checkbox);
                     if (checkbox) {
                         checkbox.checked = true;
                         card.style.opacity = '0.4';
+                        console.log('Post', index, 'restored as posted');
                     }
                 }
                 
@@ -491,12 +500,14 @@ And things only got more interesting from there 💋`,
         
         renderPosts();
         
-        // Load posted status after rendering (with longer delay to ensure DOM ready)
-        setTimeout(() => {
-            loadPostedStatus();
-            // Apply filter after restoring all states
-            applyPostedFilter();
-        }, 300);
+        // Load posted status after rendering
+        window.addEventListener('load', () => {
+            console.log('Window loaded, restoring states...');
+            setTimeout(() => {
+                loadPostedStatus();
+                applyPostedFilter();
+            }, 500);
+        });
         
         // Load saved theme
         loadTheme();
