@@ -207,7 +207,13 @@
 <body>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h1 style="margin: 0;">📸 Lotte Post Manager</h1>
-        <button onclick="toggleDarkMode()" id="theme-toggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 50%; transition: background 0.2s;">🌙</button>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; font-weight: 600;">
+                <input type="checkbox" id="show-posted-toggle" onchange="toggleShowPosted()" checked style="width: 16px; height: 16px;">
+                <span>Show Posted</span>
+            </label>
+            <button onclick="toggleDarkMode()" id="theme-toggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 50%; transition: background 0.2s;">🌙</button>
+        </div>
     </div>
     
     <div id="posts"></div>
@@ -341,22 +347,52 @@ And things only got more interesting from there 💋`,
             localStorage.setItem(`posted-${postId}`, isPosted);
             
             const card = document.getElementById(`post-${postId}`);
+            card.setAttribute('data-posted', isPosted);
+            
             if (isPosted) {
                 card.style.opacity = '0.6';
                 showToast('Marked as posted!');
             } else {
                 card.style.opacity = '1';
             }
+            
+            // Re-apply filter
+            applyPostedFilter();
+        }
+        
+        function toggleShowPosted() {
+            const showPosted = document.getElementById('show-posted-toggle').checked;
+            localStorage.setItem('showPosted', showPosted);
+            applyPostedFilter();
+        }
+        
+        function applyPostedFilter() {
+            const showPosted = document.getElementById('show-posted-toggle').checked;
+            
+            posts.forEach((post, index) => {
+                const card = document.getElementById(`post-${index}`);
+                const isPosted = card.getAttribute('data-posted') === 'true';
+                
+                if (!showPosted && isPosted) {
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = 'block';
+                }
+            });
         }
         
         function loadPostedStatus() {
             posts.forEach((post, index) => {
+                const card = document.getElementById(`post-${index}`);
                 const isPosted = localStorage.getItem(`posted-${index}`) === 'true';
+                
+                card.setAttribute('data-posted', isPosted);
+                
                 if (isPosted) {
                     const checkbox = document.getElementById(`posted-${index}`);
                     if (checkbox) {
                         checkbox.checked = true;
-                        document.getElementById(`post-${index}`).style.opacity = '0.6';
+                        card.style.opacity = '0.6';
                     }
                 }
                 
@@ -375,15 +411,28 @@ And things only got more interesting from there 💋`,
                     }
                 }
             });
+            
+            // Load filter preference
+            const showPosted = localStorage.getItem('showPosted');
+            if (showPosted !== null) {
+                document.getElementById('show-posted-toggle').checked = showPosted === 'true';
+            }
+            applyPostedFilter();
         }
         
         function renderPosts() {
             const container = document.getElementById('posts');
             container.innerHTML = posts.map((post, index) => `
-                <div class="post-card" id="post-${index}">
+                <div class="post-card" id="post-${index}" data-posted="false">
                     <div class="post-header">
                         <span class="post-date">${post.date}</span>
-                        <button onclick="downloadImage('${post.image}', 'lotte-${post.date}.jpg', this)" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <button onclick="downloadImage('${post.image}', 'lotte-${post.date}.jpg', this)" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
+                            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">
+                                <input type="checkbox" id="posted-${index}" onchange="togglePosted(${index})" style="width: 14px; height: 14px;">
+                                <span>Posted</span>
+                            </label>
+                        </div>
                         <span class="post-trend">${post.trend}</span>
                     </div>
                     
@@ -394,13 +443,6 @@ And things only got more interesting from there 💋`,
                     <div class="action-buttons">
                         <button class="btn btn-instagram" onclick="postToInstagram(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">📸 Post to Instagram</button>
                         <button class="btn btn-x" onclick="postToX(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">𝕏 Post to X</button>
-                    </div>
-                    
-                    <div style="padding: 0 15px 15px;">
-                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;">
-                            <input type="checkbox" id="posted-${index}" onchange="togglePosted(${index})" style="width: 18px; height: 18px;">
-                            <span>Mark as posted</span>
-                        </label>
                     </div>
                     
                     <div class="tabs">
