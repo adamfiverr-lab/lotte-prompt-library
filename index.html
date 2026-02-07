@@ -224,7 +224,8 @@
         const posts = [{
             date: '2026-02-07',
             trend: 'Saturday Night',
-            image: 'https://res.cloudinary.com/dgum0iicx/image/upload/v1770492808/c72300j5tp8jqe2byrcq.jpg',
+            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-07.jpg',
+            filename: 'lotte-2026-02-07.jpg',
             instagram: `Saturday night with the girls 💕🥂
 
 Living my best life ✨
@@ -310,11 +311,14 @@ And things only got more interesting from there 💋`,
         }
         
         function deletePost(postId) {
-            if (confirm('Are you sure you want to delete this post? This cannot be undone.')) {
+            if (confirm('Are you sure you want to delete this post? This will hide it from view.')) {
                 const card = document.getElementById(`post-${postId}`);
                 card.style.display = 'none';
                 localStorage.setItem(`deleted-${postId}`, 'true');
-                showToast('Post deleted');
+                showToast('Post hidden from view');
+                
+                // Note: To actually delete from GitHub, manually remove from:
+                // https://github.com/adamfiverr-lab/lotte-viewer/tree/main/images
             }
         }
         
@@ -342,8 +346,9 @@ And things only got more interesting from there 💋`,
                 btnElement.parentNode.insertBefore(savedText, btnElement);
                 showToast('Image saved!');
                 
-                // Store in localStorage
-                localStorage.setItem(`saved-${filename}`, 'true');
+                // Store in localStorage using post index
+                const postIndex = btnElement.closest('.post-card').id.replace('post-', '');
+                localStorage.setItem(`saved-${postIndex}`, 'true');
             } catch (e) {
                 showToast('Download failed - try right-click save');
                 window.open(url, '_blank');
@@ -414,7 +419,7 @@ And things only got more interesting from there 💋`,
                 }
                 
                 // Check if image was saved
-                const isSaved = localStorage.getItem(`saved-lotte-${post.date}.jpg`) === 'true';
+                const isSaved = localStorage.getItem(`saved-${index}`) === 'true';
                 if (isSaved) {
                     const saveBtn = document.querySelector(`#post-${index} button[onclick*="downloadImage"]`);
                     if (saveBtn) {
