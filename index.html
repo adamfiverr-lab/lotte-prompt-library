@@ -398,6 +398,7 @@ And things only got more interesting from there 💋`,
         function loadPostedStatus() {
             posts.forEach((post, index) => {
                 const card = document.getElementById(`post-${index}`);
+                if (!card) return;
                 
                 // Check if deleted
                 const isDeleted = localStorage.getItem(`deleted-${index}`) === 'true';
@@ -406,8 +407,8 @@ And things only got more interesting from there 💋`,
                     return;
                 }
                 
+                // Check and restore posted status
                 const isPosted = localStorage.getItem(`posted-${index}`) === 'true';
-                
                 card.setAttribute('data-posted', isPosted);
                 
                 if (isPosted) {
@@ -490,8 +491,12 @@ And things only got more interesting from there 💋`,
         
         renderPosts();
         
-        // Load posted status after rendering
-        setTimeout(loadPostedStatus, 100);
+        // Load posted status after rendering (with longer delay to ensure DOM ready)
+        setTimeout(() => {
+            loadPostedStatus();
+            // Apply filter after restoring all states
+            applyPostedFilter();
+        }, 300);
         
         // Load saved theme
         loadTheme();
