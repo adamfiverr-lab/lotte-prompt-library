@@ -309,6 +309,15 @@ And things only got more interesting from there 💋`,
             }
         }
         
+        function deletePost(postId) {
+            if (confirm('Are you sure you want to delete this post? This cannot be undone.')) {
+                const card = document.getElementById(`post-${postId}`);
+                card.style.display = 'none';
+                localStorage.setItem(`deleted-${postId}`, 'true');
+                showToast('Post deleted');
+            }
+        }
+        
         async function downloadImage(url, filename, btnElement) {
             try {
                 showToast('Downloading...');
@@ -384,6 +393,14 @@ And things only got more interesting from there 💋`,
         function loadPostedStatus() {
             posts.forEach((post, index) => {
                 const card = document.getElementById(`post-${index}`);
+                
+                // Check if deleted
+                const isDeleted = localStorage.getItem(`deleted-${index}`) === 'true';
+                if (isDeleted) {
+                    card.style.display = 'none';
+                    return;
+                }
+                
                 const isPosted = localStorage.getItem(`posted-${index}`) === 'true';
                 
                 card.setAttribute('data-posted', isPosted);
@@ -434,6 +451,7 @@ And things only got more interesting from there 💋`,
                                 <input type="checkbox" id="posted-${index}" onchange="togglePosted(${index})" style="width: 14px; height: 14px;">
                                 <span>Posted</span>
                             </label>
+                            <button onclick="deletePost(${index})" style="background: none; border: none; color: #ff4444; font-size: 12px; cursor: pointer; font-weight: 600;">🗑️ Delete</button>
                         </div>
                         <span class="post-trend">${post.trend}</span>
                     </div>
