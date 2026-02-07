@@ -3,41 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotte - Drive Viewer</title>
+    <title>Lotte (@lotte.ai) • Instagram-style Viewer</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #fafafa; color: #262626; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; }
-        h1 { text-align: center; margin-bottom: 20px; color: #e1306c; }
-        .loading { text-align: center; padding: 40px; color: #999; }
-        .image-card { background: white; border: 1px solid #dbdbdb; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
-        .image-header { padding: 15px; background: #f8f8f8; border-bottom: 1px solid #dbdbdb; display: flex; justify-content: space-between; align-items: center; }
-        .trend-tag { background: #e1306c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .image-container img { width: 100%; height: auto; display: block; }
-        .caption-section { padding: 15px; border-bottom: 1px solid #eee; }
-        .caption-section:last-child { border-bottom: none; }
-        .caption-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .caption-header h4 { font-size: 13px; color: #666; text-transform: uppercase; }
-        .copy-btn { background: #0095f6; color: white; border: none; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 13px; }
-        .copy-btn:hover { background: #0077c2; }
-        .copy-btn.copied { background: #22c55e; }
-        .caption-text { background: #f8f8f8; padding: 12px; border-radius: 6px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
-        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 12px 24px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.3s; }
-        .toast.show { opacity: 1; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: #fff; 
+            color: #262626; 
+        }
+        
+        /* Instagram Header */
+        .ig-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+        }
+        .ig-logo {
+            font-size: 28px;
+            font-weight: 600;
+            font-family: 'Segoe UI', cursive;
+        }
+        .ig-icons {
+            display: flex;
+            gap: 20px;
+        }
+        .ig-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Main Feed */
+        .ig-feed {
+            max-width: 470px;
+            margin: 60px auto 60px;
+            padding-top: 20px;
+        }
+        
+        /* Post Card */
+        .ig-post {
+            background: #fff;
+            border-bottom: 1px solid #efefef;
+            margin-bottom: 20px;
+        }
+        
+        /* Post Header */
+        .ig-post-header {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+        }
+        .ig-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            padding: 2px;
+            margin-right: 12px;
+        }
+        .ig-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
+        .ig-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .ig-location {
+            font-size: 12px;
+            color: #8e8e8e;
+        }
+        .ig-more {
+            margin-left: auto;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        /* Post Image */
+        .ig-post-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: #efefef;
+        }
+        .ig-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Action Buttons */
+        .ig-actions {
+            display: flex;
+            padding: 12px 16px;
+            gap: 16px;
+        }
+        .ig-action-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .ig-action-btn:hover {
+            opacity: 0.6;
+        }
+        .ig-action-btn.liked {
+            color: #ed4956;
+        }
+        .ig-action-btn.save {
+            margin-left: auto;
+        }
+        
+        /* Likes */
+        .ig-likes {
+            padding: 0 16px 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        /* Caption */
+        .ig-caption {
+            padding: 0 16px 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .ig-caption-username {
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        .ig-caption-text {
+            cursor: pointer;
+        }
+        
+        /* Comments */
+        .ig-comments-link {
+            padding: 0 16px 8px;
+            color: #8e8e8e;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        /* Timestamp */
+        .ig-timestamp {
+            padding: 0 16px 16px;
+            color: #8e8e8e;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+        
+        /* Caption Copy Section */
+        .ig-copy-section {
+            background: #fafafa;
+            border-top: 1px solid #efefef;
+            padding: 12px 16px;
+        }
+        .ig-copy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .ig-copy-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8e8e8e;
+            text-transform: uppercase;
+        }
+        .ig-copy-btn {
+            background: #0095f6;
+            color: #fff;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .ig-copy-btn:active {
+            opacity: 0.7;
+        }
+        .ig-copy-text {
+            background: #fff;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+        
+        /* Bottom Nav */
+        .ig-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #fff;
+            border-top: 1px solid #dbdbdb;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+        }
+        .ig-nav-btn {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .ig-nav-btn.profile img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Toast */
+        .ig-toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #262626;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 200;
+        }
+        .ig-toast.show {
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .ig-feed {
+                padding-top: 30px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📸 Lotte Viewer</h1>
-        <div id="content">
-            <div class="loading">Loading images...</div>
+    <!-- Header -->
+    <header class="ig-header">
+        <div class="ig-logo">Lotte</div>
+        <div class="ig-icons">
+            <span class="ig-icon">❤️</span>
+            <span class="ig-icon">💬</span>
         </div>
-    </div>
-    <div class="toast" id="toast">Copied!</div>
+    </header>
+    
+    <!-- Feed -->
+    <main class="ig-feed" id="feed">
+        <!-- Posts will be loaded here -->
+    </main>
+    
+    <!-- Bottom Nav -->
+    <nav class="ig-bottom-nav">
+        <span class="ig-nav-btn">🏠</span>
+        <span class="ig-nav-btn">🔍</span>
+        <span class="ig-nav-btn">➕</span>
+        <span class="ig-nav-btn">🎬</span>
+        <span class="ig-nav-btn profile">👤</span>
+    </nav>
+    
+    <!-- Toast -->
+    <div class="ig-toast" id="toast">Copied to clipboard!</div>
     
     <script>
-        // Google Drive file IDs (update these with your actual IDs)
-        const CAPTIONS_ID = '1kVEzOFdrJYTQb0MxGHXaSqTSpHB2yEVM';
+        // Image data
+        const posts = [{
+            id: 1,
+            username: 'lotte.ai',
+            avatar: 'https://res.cloudinary.com/dgum0iicx/image/upload/v1770492808/c72300j5tp8jqe2byrcq.jpg',
+            image: 'https://res.cloudinary.com/dgum0iicx/image/upload/v1770492808/c72300j5tp8jqe2byrcq.jpg',
+            likes: '2,847',
+            caption: 'Saturday night with the girls 💕🥂 Living my best life ✨ Who's coming out tonight? 👇',
+            timestamp: '2 HOURS AGO',
+            instagramCaption: `Saturday night with the girls 💕🥂
+
+Living my best life ✨
+
+Who's coming out tonight? 👇
+
+#SaturdayNight #GirlsNight #LotteAI #WeekendVibes #AIinfluencer`,
+            fanvueCaption: `Saturday night ready 😈💋
+
+Full set on Fanvue (link in bio)
+
+See you there? 💕`
+        }];
         
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -46,60 +313,69 @@
             setTimeout(() => t.classList.remove('show'), 2000);
         }
         
-        function copyText(text, btn) {
+        function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
-                btn.textContent = 'Copied!';
-                btn.classList.add('copied');
                 showToast('Copied to clipboard!');
-                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
             });
         }
         
-        async function loadCaptions() {
-            try {
-                // Try to load from Google Drive
-                const url = `https://drive.google.com/uc?export=download&id=${CAPTIONS_ID}`;
-                const response = await fetch(url);
-                const data = await response.json();
-                renderImages(data.images);
-            } catch (e) {
-                // Fallback to hardcoded data
-                console.log('Using fallback data');
-                renderImages([{
-                    file: '2026-02-07.jpg',
-                    date: '2026-02-07',
-                    trend: 'Saturday Night',
-                    instagram: "Saturday night with the girls 💕🥂\n\nLiving my best life ✨\n\nWho's coming out tonight? 👇\n\n#SaturdayNight #GirlsNight #LotteAI",
-                    fanvue: "Saturday night ready 😈💋\n\nFull set on Fanvue (link in bio)\n\nSee you there? 💕",
-                    cloudinaryUrl: 'https://res.cloudinary.com/dgum0iicx/image/upload/v1770492808/c72300j5tp8jqe2byrcq.jpg'
-                }]);
-            }
+        function toggleLike(btn) {
+            btn.classList.toggle('liked');
+            btn.textContent = btn.classList.contains('liked') ? '❤️' : '🤍';
         }
         
-        function renderImages(images) {
-            const container = document.getElementById('content');
-            container.innerHTML = images.map(img => `
-                <div class="image-card">
-                    <div class="image-header">
-                        <span>${img.date}</span>
-                        <span class="trend-tag">${img.trend}</span>
+        function renderPosts() {
+            const feed = document.getElementById('feed');
+            feed.innerHTML = posts.map(post => `
+                <article class="ig-post">
+                    <div class="ig-post-header">
+                        <div class="ig-avatar">
+                            <img src="${post.avatar}" alt="${post.username}">
+                        </div>
+                        <div>
+                            <div class="ig-username">${post.username}</div>
+                            <div class="ig-location">Original audio</div>
+                        </div>
+                        <div class="ig-more">⋯</div>
                     </div>
-                    <div class="image-container">
-                        <img src="${img.cloudinaryUrl}" alt="${img.date}" onerror="this.src='https://via.placeholder.com/600x800?text=Image+Not+Found'">
+                    
+                    <div class="ig-post-image">
+                        <img src="${post.image}" alt="Post" onerror="this.src='https://via.placeholder.com/470x588?text=Image'">
                     </div>
-                    <div class="caption-section">
-                        <div class="caption-header"><h4>📸 Instagram</h4><button class="copy-btn" onclick="copyText(this.parentElement.nextElementSibling.textContent,this)">Copy</button></div>
-                        <div class="caption-text">${img.instagram}</div>
+                    
+                    <div class="ig-actions" style="padding: 12px 16px; display: flex; gap: 12px;">
+                        <button class="ig-copy-btn" style="flex: 1; background: #e1306c;" onclick="window.open('https://instagram.com', '_blank')">📸 Post to Instagram</button>
+                        <button class="ig-copy-btn" style="flex: 1; background: #000;" onclick="window.open('https://twitter.com', '_blank')">𝕏 Post to X</button>
                     </div>
-                    <div class="caption-section">
-                        <div class="caption-header"><h4>💋 Fanvue</h4><button class="copy-btn" onclick="copyText(this.parentElement.nextElementSibling.textContent,this)">Copy</button></div>
-                        <div class="caption-text">${img.fanvue}</div>
+                    
+                    <div class="ig-caption">
+                        <span class="ig-caption-username">${post.username}</span>
+                        <span class="ig-caption-text">${post.caption}</span>
                     </div>
-                </div>
+                    
+                    <div class="ig-comments-link">View all 128 comments</div>
+                    <div class="ig-timestamp">${post.timestamp}</div>
+                    
+                    <div class="ig-copy-section">
+                        <div class="ig-copy-header">
+                            <span class="ig-copy-label">📸 Instagram Caption</span>
+                            <button class="ig-copy-btn" onclick="copyText(\`${post.instagramCaption}\`)">Copy</button>
+                        </div>
+                        <div class="ig-copy-text">${post.instagramCaption}</div>
+                    </div>
+                    
+                    <div class="ig-copy-section">
+                        <div class="ig-copy-header">
+                            <span class="ig-copy-label">💋 Fanvue Caption</span>
+                            <button class="ig-copy-btn" onclick="copyText(\`${post.fanvueCaption}\`)">Copy</button>
+                        </div>
+                        <div class="ig-copy-text">${post.fanvueCaption}</div>
+                    </div>
+                </article>
             `).join('');
         }
         
-        loadCaptions();
+        renderPosts();
     </script>
 </body>
 </html>
