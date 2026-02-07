@@ -206,13 +206,13 @@
 </head>
 <body>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h1 style="margin: 0;">📸 Lotte Post Manager</h1>
+        <h1 style="margin: 0;">Post Manager</h1>
         <div style="display: flex; align-items: center; gap: 15px;">
             <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 13px; font-weight: 600;">
-                <input type="checkbox" id="show-posted-toggle" onchange="toggleShowPosted()" checked style="width: 16px; height: 16px;">
+                <input type="checkbox" id="show-posted-toggle" onchange="toggleShowPosted()" style="width: 16px; height: 16px;">
                 <span>Show Posted</span>
             </label>
-            <button onclick="toggleDarkMode()" id="theme-toggle" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 8px; border-radius: 50%; transition: background 0.2s;">🌙</button>
+            <span onclick="toggleDarkMode()" id="theme-toggle" style="cursor: pointer; font-size: 18px;">🌙</span>
         </div>
     </div>
     
@@ -412,10 +412,12 @@ And things only got more interesting from there 💋`,
                 }
             });
             
-            // Load filter preference
+            // Load filter preference (default: unchecked = hide posted)
             const showPosted = localStorage.getItem('showPosted');
             if (showPosted !== null) {
                 document.getElementById('show-posted-toggle').checked = showPosted === 'true';
+            } else {
+                document.getElementById('show-posted-toggle').checked = false;
             }
             applyPostedFilter();
         }
