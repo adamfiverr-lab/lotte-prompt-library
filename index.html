@@ -293,6 +293,10 @@ And neither did I 💋`,
                         <button class="btn btn-x" onclick="postToX(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">𝕏 Post to X</button>
                     </div>
                     
+                    <div style="padding: 0 15px 15px; text-align: center;">
+                        <a href="${post.image}" download="lotte-${post.date}.jpg" style="color: #0095f6; text-decoration: none; font-size: 14px; font-weight: 600;">💾 Save Image</a>
+                    </div>
+                    
                     <div style="padding: 0 15px 15px;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;">
                             <input type="checkbox" id="posted-${index}" onchange="togglePosted(${index})" style="width: 18px; height: 18px;">
