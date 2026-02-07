@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotte - Drive Viewer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #fafafa; color: #262626; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 20px; color: #e1306c; }
+        .loading { text-align: center; padding: 40px; color: #999; }
+        .image-card { background: white; border: 1px solid #dbdbdb; border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+        .image-header { padding: 15px; background: #f8f8f8; border-bottom: 1px solid #dbdbdb; display: flex; justify-content: space-between; align-items: center; }
+        .trend-tag { background: #e1306c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .image-container img { width: 100%; height: auto; display: block; }
+        .caption-section { padding: 15px; border-bottom: 1px solid #eee; }
+        .caption-section:last-child { border-bottom: none; }
+        .caption-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .caption-header h4 { font-size: 13px; color: #666; text-transform: uppercase; }
+        .copy-btn { background: #0095f6; color: white; border: none; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+        .copy-btn:hover { background: #0077c2; }
+        .copy-btn.copied { background: #22c55e; }
+        .caption-text { background: #f8f8f8; padding: 12px; border-radius: 6px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 12px 24px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity 0.3s; }
+        .toast.show { opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Lotte Viewer</h1>
+        <div id="content">
+            <div class="loading">Loading images...</div>
+        </div>
+    </div>
+    <div class="toast" id="toast">Copied!</div>
+    
+    <script>
+        // Google Drive file IDs (update these with your actual IDs)
+        const CAPTIONS_ID = '1kVEzOFdrJYTQb0MxGHXaSqTSpHB2yEVM';
+        
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
+        
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                showToast('Copied to clipboard!');
+                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+        
+        async function loadCaptions() {
+            try {
+                // Try to load from Google Drive
+                const url = `https://drive.google.com/uc?export=download&id=${CAPTIONS_ID}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                renderImages(data.images);
+            } catch (e) {
+                // Fallback to hardcoded data
+                console.log('Using fallback data');
+                renderImages([{
+                    file: '2026-02-07.jpg',
+                    date: '2026-02-07',
+                    trend: 'Saturday Night',
+                    instagram: "Saturday night with the girls 💕🥂\n\nLiving my best life ✨\n\nWho's coming out tonight? 👇\n\n#SaturdayNight #GirlsNight #LotteAI",
+                    fanvue: "Saturday night ready 😈💋\n\nFull set on Fanvue (link in bio)\n\nSee you there? 💕",
+                    cloudinaryUrl: 'https://res.cloudinary.com/dgum0iicx/image/upload/v1770492808/c72300j5tp8jqe2byrcq.jpg'
+                }]);
+            }
+        }
+        
+        function renderImages(images) {
+            const container = document.getElementById('content');
+            container.innerHTML = images.map(img => `
+                <div class="image-card">
+                    <div class="image-header">
+                        <span>${img.date}</span>
+                        <span class="trend-tag">${img.trend}</span>
+                    </div>
+                    <div class="image-container">
+                        <img src="${img.cloudinaryUrl}" alt="${img.date}" onerror="this.src='https://via.placeholder.com/600x800?text=Image+Not+Found'">
+                    </div>
+                    <div class="caption-section">
+                        <div class="caption-header"><h4>📸 Instagram</h4><button class="copy-btn" onclick="copyText(this.parentElement.nextElementSibling.textContent,this)">Copy</button></div>
+                        <div class="caption-text">${img.instagram}</div>
+                    </div>
+                    <div class="caption-section">
+                        <div class="caption-header"><h4>💋 Fanvue</h4><button class="copy-btn" onclick="copyText(this.parentElement.nextElementSibling.textContent,this)">Copy</button></div>
+                        <div class="caption-text">${img.fanvue}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        loadCaptions();
+    </script>
+</body>
+</html>
