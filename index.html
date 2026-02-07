@@ -262,9 +262,14 @@ And things only got more interesting from there 💋`,
                 document.body.removeChild(a);
                 window.URL.revokeObjectURL(blobUrl);
                 
-                // Visual feedback - change button
-                btnElement.textContent = '✅ Saved';
-                btnElement.style.color = '#00c853';
+                // Visual feedback - hide button, show text
+                btnElement.style.display = 'none';
+                const savedText = document.createElement('span');
+                savedText.textContent = '✅ Downloaded';
+                savedText.style.color = '#00c853';
+                savedText.style.fontSize = '12px';
+                savedText.style.fontWeight = '600';
+                btnElement.parentNode.insertBefore(savedText, btnElement);
                 showToast('Image saved!');
                 
                 // Store in localStorage
@@ -305,8 +310,13 @@ And things only got more interesting from there 💋`,
                 if (isSaved) {
                     const saveBtn = document.querySelector(`#post-${index} button[onclick*="downloadImage"]`);
                     if (saveBtn) {
-                        saveBtn.textContent = '✅ Saved';
-                        saveBtn.style.color = '#00c853';
+                        saveBtn.style.display = 'none';
+                        const savedText = document.createElement('span');
+                        savedText.textContent = '✅ Downloaded';
+                        savedText.style.color = '#00c853';
+                        savedText.style.fontSize = '12px';
+                        savedText.style.fontWeight = '600';
+                        saveBtn.parentNode.insertBefore(savedText, saveBtn);
                     }
                 }
             });
