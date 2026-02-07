@@ -313,7 +313,11 @@ And things only got more interesting from there 💋`,
 
         function renderPosts() {
             const container = document.getElementById('posts');
-            container.innerHTML = posts.map((post, index) => `
+            
+            // Sort posts by date (most recent first)
+            const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            container.innerHTML = sortedPosts.map((post, index) => `
                 <div class="post-card" id="post-${index}">
                     <div class="post-header">
                         <span class="post-date">${post.date}</span>
