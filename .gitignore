@@ -1,2 +1,7 @@
 .vercel
 .vercel-token.txt
+images/lotte-*.jpg
+skills/lotte-*/
+LOTTE-*.md
+lotte-*.json
+daily-output/
