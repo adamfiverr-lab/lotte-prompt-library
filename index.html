@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotte Prompt Library - Prompts</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Lotte Prompt Library - 283 Prompts</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -219,7 +222,7 @@
         // Load data with progress tracking
         async function loadData() {
             try {
-                const response = await fetch('categorized_prompts_generic.json?v=283');
+                const response = await fetch('prompts_data.json?t=' + Date.now());
                 const reader = response.body.getReader();
                 const contentLength = +response.headers.get('Content-Length');
                 let receivedLength = 0;
