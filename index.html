@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotte Prompt Library - 237 Prompts</title>
+    <title>Lotte Prompt Library - Prompts</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -198,7 +198,7 @@
     <div class="container" id="container">
         <div class="loading">
             <div class="loading-spinner"></div>
-            <p>Loading 237 prompts...</p>
+            <p>Loading prompts...</p>
             <p style="font-size: 0.85rem; margin-top: 0.5rem;">This may take a few seconds</p>
         </div>
     </div>
@@ -219,7 +219,7 @@
         // Load data with progress tracking
         async function loadData() {
             try {
-                const response = await fetch('categorized_prompts_generic.json');
+                const response = await fetch('categorized_prompts_generic.json?v=283');
                 const reader = response.body.getReader();
                 const contentLength = +response.headers.get('Content-Length');
                 let receivedLength = 0;
