@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotte Prompt Library</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .prompt-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .prompt-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+        .prompt-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .prompt-preview {
+            color: #aaa;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+            max-height: 100px;
+            overflow: hidden;
+        }
+        .instructions {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 Lotte Prompt Library</h1>
+        <p>400+ AI Image Generation Prompts</p>
+    </div>
+    
+    <div class="container">
+        <div class="instructions">
+            <h2>Prompt Collection</h2>
+            <p>Extracted from @bananababydoll Twitter/X account</p>
+            <p style="margin-top: 1rem;">
+                📁 <strong>Location:</strong> <code>/lotte/promptlibrary/raw-extracts/</code><br>
+                📊 <strong>Total:</strong> ~400 prompts (790KB + 179KB)<br>
+                📄 <strong>Files:</strong> bananababydoll-tweets.json (200 tweets)<br>
+                📄 <strong>Files:</strong> bananababydoll-tweets-2.json (200 tweets)
+            </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+            <h3 style="color: #667eea;">Google Drive Links:</h3>
+            <ul style="line-height: 2;">
+                <li><a href="https://drive.google.com/open?id=1RlfDOUH_R6Yu3pN4BFhZBqi3BTmsSXJU" style="color: #667eea;">Batch 1 (790KB) - Tweets 1-200</a></li>
+                <li><a href="https://drive.google.com/open?id=1RlfDOUH_R6Yu3pN4BFhZBqi3BTmsSXJU" style="color: #667eea;">Batch 2 (179KB) - Tweets 201-400</a></li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 12px;">
+            <h3 style="color: #667eea;">Sample Prompt Structure:</h3>
+            <pre style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem;">{
+  "meta": {
+    "quality": "ultra photorealistic",
+    "camera": "iPhone 15 Pro Max",
+    "aspect_ratio": "9:16"
+  },
+  "character_lock": { ... },
+  "scene": { ... },
+  "lighting": { ... }
+}</pre>
+        </div>
+    </div>
+</body>
+</html>
