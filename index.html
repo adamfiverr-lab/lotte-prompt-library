@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotte Prompt Library</title>
+    <title>Lotte Prompt Library - 237 Prompts</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -27,6 +27,20 @@
         .stats { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
         .stat { text-align: center; }
         .stat-number { font-size: 2rem; color: #667eea; font-weight: bold; }
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 1rem auto;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s;
+        }
         .categories {
             display: flex;
             gap: 0.5rem;
@@ -52,6 +66,21 @@
             color: #fff;
         }
         .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .prompt-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.05);
@@ -60,6 +89,11 @@
             margin-bottom: 1rem;
             cursor: pointer;
             transition: all 0.2s;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .prompt-card:hover {
             background: rgba(255,255,255,0.06);
@@ -90,13 +124,8 @@
             color: #aaa;
             font-size: 0.85rem;
             line-height: 1.5;
-            max-height: 80px;
+            max-height: 60px;
             overflow: hidden;
-        }
-        .loading, .error {
-            text-align: center;
-            padding: 3rem;
-            color: #888;
         }
         .modal {
             display: none;
@@ -105,7 +134,6 @@
             background: rgba(0,0,0,0.95);
             z-index: 1000;
             padding: 1rem;
-            overflow-y: auto;
         }
         .modal.active { display: block; }
         .modal-content {
@@ -152,12 +180,13 @@
     <div class="header">
         <h1>🎨 Lotte Prompt Library</h1>
         <div class="stats">
-            <div class="stat"><div class="stat-number" id="total-count">-</div><div class="stat-label">Prompts</div></div>
+            <div class="stat"><div class="stat-number" id="total-count">237</div><div class="stat-label">Prompts</div></div>
             <div class="stat"><div class="stat-number">5</div><div class="stat-label">Categories</div></div>
         </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
     </div>
     
-    <div class="categories">
+    <div class="categories" id="categories" style="display:none;">
         <button class="category-btn active" onclick="filterCategory('all')">All</button>
         <button class="category-btn" onclick="filterCategory('Lingerie & Intimate')">Lingerie</button>
         <button class="category-btn" onclick="filterCategory('Bedroom & Morning')">Bedroom</button>
@@ -167,10 +196,14 @@
     </div>
     
     <div class="container" id="container">
-        <div class="loading">Loading prompts...</div>
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Loading 237 prompts...</p>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">This may take a few seconds</p>
+        </div>
     </div>
     
-    <div class="modal" id="modal" onclick="closeModalOnBackground(event)">
+    <div class="modal" id="modal" onclick="if(event.target.id=='modal')closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <h2 style="color: #667eea; margin-bottom: 1rem;" id="modal-title"></h2>
@@ -183,12 +216,37 @@
         let allPrompts = [];
         let currentPromptText = '';
 
+        // Load data with progress tracking
         async function loadData() {
             try {
                 const response = await fetch('categorized_prompts.json');
-                const data = await response.json();
-                
-                // Flatten data
+                const reader = response.body.getReader();
+                const contentLength = +response.headers.get('Content-Length');
+                let receivedLength = 0;
+                let chunks = [];
+
+                while(true) {
+                    const {done, value} = await reader.read();
+                    if (done) break;
+                    chunks.push(value);
+                    receivedLength += value.length;
+                    const progress = (receivedLength / contentLength * 100).toFixed(0);
+                    document.getElementById('progress').style.width = progress + '%';
+                }
+
+                // Concatenate chunks
+                let chunksAll = new Uint8Array(receivedLength);
+                let position = 0;
+                for(let chunk of chunks) {
+                    chunksAll.set(chunk, position);
+                    position += chunk.length;
+                }
+
+                // Decode and parse
+                const text = new TextDecoder("utf-8").decode(chunksAll);
+                const data = JSON.parse(text);
+
+                // Process data
                 allPrompts = [];
                 Object.entries(data).forEach(([category, items]) => {
                     items.forEach(item => {
@@ -197,39 +255,56 @@
                             id: item.id,
                             title: firstLine.length > 60 ? firstLine.substring(0, 60) + '...' : firstLine,
                             category: category,
-                            preview: item.text.substring(0, 200) + '...',
+                            preview: item.text.substring(0, 180) + '...',
                             fullText: item.text
                         });
                     });
                 });
-                
+
                 document.getElementById('total-count').textContent = allPrompts.length;
-                renderPrompts(allPrompts);
+                document.getElementById('categories').style.display = 'flex';
+                document.getElementById('progress').style.width = '100%';
+                
+                // Render in batches for better performance
+                renderBatched(allPrompts);
+                
             } catch (error) {
-                document.getElementById('container').innerHTML = 
-                    '<div class="error">Error loading data. Please try refreshing the page.</div>';
                 console.error('Error:', error);
+                document.getElementById('container').innerHTML = 
+                    '<div class="loading">Error loading data. <button onclick="location.reload()" style="margin-top:1rem;padding:0.5rem 1rem;background:#667eea;border:none;border-radius:5px;color:white;cursor:pointer;">Retry</button></div>';
             }
         }
 
-        function renderPrompts(prompts) {
-            const
-        function renderPrompts(prompts) {
+        function renderBatched(prompts, batchSize = 20) {
             const container = document.getElementById('container');
-            if (prompts.length === 0) {
-                container.innerHTML = '<div class="loading">No prompts found.</div>';
-                return;
+            container.innerHTML = '';
+            
+            let index = 0;
+            function renderNextBatch() {
+                const batch = prompts.slice(index, index + batchSize);
+                const html = batch.map(p => `
+                    <div class="prompt-card" onclick="openModal('${p.id}')">
+                        <div class="prompt-header">
+                            <div class="prompt-title">${escapeHtml(p.title)}</div>
+                            <div class="prompt-category">${p.category.replace(' & ', '/')}</div>
+                        </div>
+                        <div class="prompt-preview">${escapeHtml(p.preview)}</div>
+                    </div>
+                `).join('');
+                
+                if (index === 0) {
+                    container.innerHTML = html;
+                } else {
+                    container.insertAdjacentHTML('beforeend', html);
+                }
+                
+                index += batchSize;
+                if (index < prompts.length) {
+                    setTimeout(renderNextBatch, 50);
+                }
             }
             
-            container.innerHTML = prompts.map(p => `
-                <div class="prompt-card" onclick="openModal('${p.id}')">
-                    <div class="prompt-header">
-                        <div class="prompt-title">${escapeHtml(p.title)}</div>
-                        <div class="prompt-category">${p.category}</div>
-                    </div>
-                    <div class="prompt-preview">${escapeHtml(p.preview)}</div>
-                </div>
-            `).join('');
+            renderNextBatch();
         }
 
         function escapeHtml(text) {
@@ -239,7 +314,6 @@
         }
 
         function filterCategory(category) {
-            // Update button states
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if ((category === 'all' && btn.textContent === 'All') || 
@@ -248,12 +322,11 @@
                 }
             });
             
-            // Filter prompts
             if (category === 'all') {
-                renderPrompts(allPrompts);
+                renderBatched(allPrompts);
             } else {
                 const filtered = allPrompts.filter(p => p.category === category);
-                renderPrompts(filtered);
+                renderBatched(filtered);
             }
         }
 
@@ -273,24 +346,15 @@
             document.body.style.overflow = 'auto';
         }
 
-        function closeModalOnBackground(event) {
-            if (event.target.id === 'modal') {
-                closeModal();
-            }
-        }
-
         function copyPrompt() {
             navigator.clipboard.writeText(currentPromptText).then(() => {
                 const btn = document.querySelector('.copy-btn');
-                const originalText = btn.textContent;
                 btn.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
+                setTimeout(() => btn.textContent = '📋 Copy Full Prompt', 2000);
             });
         }
 
-        // Load data on page load
+        // Start loading
         loadData();
     </script>
 </body>
