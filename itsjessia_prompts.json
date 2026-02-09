@@ -1,0 +1,2151 @@
+{
+  "source": "@itsjessiababy",
+  "count": 19,
+  "prompts": [
+    {
+      "id": "itsjessia_1",
+      "data": {
+        "subject": {
+          "outfit": "A tight-fitting, long-sleeved, lavender or light lilac mini dress (or romper/bodysuit). The fabric appears to be a matte, stretchy activewear material (spandex/nylon blend). Features a large, open-back cutout exposing the mid and upper back. Distinctive ruched 'scrunch' detailing along the vertical seam of the buttocks to accentuate shape."
+        },
+        "pose": {
+          "orientation": "Standing, angled away from the camera (dorsal/rear view), twisting the torso to look back over the left shoulder.",
+          "spine_and_posture": "Pronounced arch in the lower back. Shoulders are angled downwards relative to the camera view. The neck is rotated to the left.",
+          "limbs": "Left arm is bent at the elbow, hand resting near the clavicle. Right arm is extended downwards, partially obscured. Legs are straight, standing on a paved surface.",
+          "head_tilt": "Chin slightly tucked, face angled upward towards the camera lens.",
+          "details": "Barefoot with white toenail polish visible."
+        },
+        "environment": {
+          "location": "Outdoor driveway or patio area.",
+          "ground": "Light grey concrete slabs or pavers with visible seams.",
+          "background_elements": "A textured beige stucco pillar or wall on the immediate left foreground. Background contains blurred green trees and foliage, suggesting a residential or park-like setting.",
+          "depth": "Shallow depth of field; the subject is sharp, while the background vegetation is soft and out of focus."
+        },
+        "camera": {
+          "angle": "High angle shot (camera positioned above the subject looking down at roughly 45 degrees).",
+          "framing": "Medium-full shot, capturing from the top of the head down to the ankles/feet.",
+          "perspective": "Perspective foreshortening emphasizes the head and shoulders while tapering towards the feet. The downward angle accentuates the curvature of the back and hips.",
+          "lens_characteristics": "Sharp focus on the subject, slight background bokeh."
+        },
+        "lighting": {
+          "type": "Natural daylight, likely overcast or open shade.",
+          "quality": "Soft, diffused lighting with no harsh, direct sun highlights on the skin. Shadows are soft and gradual.",
+          "direction": "Top-down, ambient.",
+          "skin_rendering": "Realistic skin texture with natural sheen on the forehead and nose. visible collarbone shadows."
+        },
+        "mood_and_expression": {
+          "expression": "Confident, alluring, with a subtle, closed-mouth smile and direct eye contact.",
+          "vibe": "Casual, flirty, social media aesthetic.",
+          "gaze": "Directly engaging with the viewer."
+        },
+        "style_and_realism": {
+          "aesthetic": "High-fidelity social media portrait, realistic photography.",
+          "rendering": "Photorealistic, maintaining skin texture (pores, slight shine) and fabric physics (wrinkles, tension lines in the dress).",
+          "color_grading": "Natural colors with a slight warmth."
+        },
+        "colors_and_tone": {
+          "palette": "Lavender (dress), Tan (skin), Dark Brown and Blonde (hair), Grey (concrete), Green (foliage).",
+          "contrast": "Moderate contrast.",
+          "saturation": "Natural saturation."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High resolution, sharp details on eyelashes and hair strands.",
+          "noise": "Low ISO, clean image.",
+          "artifacts": "None."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Vertical"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve high-angle perspective",
+              "preserve neck rotation",
+              "lock hand placement on chest",
+              "maintain arched back posture",
+              "preserve foot placement"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve foreshortening from high angle",
+              "maintain separation between subject and background foliage",
+              "ensure correct projection of curves relative to camera angle"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "low angle",
+            "eye level shot",
+            "flat lighting",
+            "messy background",
+            "phones",
+            "mirrors",
+            "selfie arm",
+            "distorted hands",
+            "extra fingers",
+            "anatomy normalization",
+            "reduced curves",
+            "flattened chest",
+            "flattened glutes",
+            "baggy clothing",
+            "cartoonish",
+            "illustration",
+            "3d render",
+            "plastic skin",
+            "excessive smoothing",
+            "proportion averaging"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_2",
+      "data": {
+        "subject": {
+          "description": "Young woman with a curvy, athletic physique, captured from the rear and side profile.",
+          "apparel_top": "Backless reddish-brown or maroon halter top that exposes the entire back. Features a delicate, decorative metallic chain strap running vertically down the spine with small bead-like embellishments.",
+          "apparel_bottom": "Light wash blue denim jeans, tight-fitting to accentuate the glutes and hips, featuring distinct back pocket stitching (American Eagle style stitching visible).",
+          "body_features": "Tan skin tone with visible natural skin texture. Prominent hip-to-waist ratio, very curvy silhouette with emphasized glutes. Toned back muscles visible due to the open back of the top."
+        },
+        "pose": {
+          "orientation": "Standing with back primarily towards the mirror, twisted slightly to the right to show profile.",
+          "head": "Turned to the right, eyes focused on the phone screen in the reflection.",
+          "arms": "Right arm raised, elbow bent, hand holding a white smartphone to take the photo. Left arm relaxed by the side.",
+          "torso": "Arching slightly to accentuate the lower back curve.",
+          "legs": "Hips shifted to emphasize curves, standing posture.",
+          "hands": "Right hand visible holding the phone, manicured nails (white or light tips)."
+        },
+        "environment": {
+          "setting": "Indoor room, likely a bedroom.",
+          "background_left": "A wooden door with horizontal paneling and a silver doorknob.",
+          "background_right": "White wall featuring a framed artwork with a black frame and a botanical print (leaves). Below the art, a white shelf or surface with a round woven macram\u00e9 placemat or rug.",
+          "foreground_details": "The bottom edge of the mirror is visible, showing white electrical outlets with switches on the wall below the mirror reflection."
+        },
+        "camera": {
+          "shot_type": "Mirror selfie, medium shot capturing from mid-thigh to top of head.",
+          "perspective": "Reflected perspective, camera is the phone seen in the image.",
+          "device": "White smartphone (iPhone style) with a case featuring a black heart or text design, held in the right hand.",
+          "focal_length": "Standard mobile wide lens (approx 26mm equivalent).",
+          "framing": "Vertical framing."
+        },
+        "lighting": {
+          "source": "Soft, diffused natural light coming from the front (behind the mirror) and ambient room lighting.",
+          "quality": "Even illumination, soft shadows on the back and jeans, highlighting the contours of the body and fabric textures.",
+          "shadows": "Subtle shadows defining the spinal groove and muscle definition on the back."
+        },
+        "mood_and_expression": {
+          "vibe": "Casual, confident, self-assured.",
+          "expression": "Focused, neutral, checking appearance in the mirror."
+        },
+        "style_and_realism": {
+          "style": "Photorealistic, user-generated content (UGC) style, high-resolution social media photo.",
+          "fidelity": "High fidelity to textures (denim, skin, hair, wood grain).",
+          "rendering": "Unfiltered, naturalistic appearance."
+        },
+        "colors_and_tone": {
+          "palette": "Natural earth tones (wood brown, maroon top, tan skin), contrasted with light denim blue and white walls.",
+          "white_balance": "Neutral, slightly warm.",
+          "contrast": "Medium contrast, preserving details in both the dark hair and bright white phone."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High quality, sharp focus on the subject.",
+          "noise": "Low distinct noise, slight digital grain typical of smartphone photography in indoor light.",
+          "sharpness": "Sharp details on the hair curls and denim texture."
+        },
+        "aspect_ratio_and_output": {
+          "aspect_ratio": "3:4",
+          "cropping": "Framed to include the head, torso, and upper legs/hips."
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement",
+              "lock arm position holding phone"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "MiDaS",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve foreground dominance of subject",
+              "maintain separation between subject and background elements (door, wall art)",
+              "prevent flat depth"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "flattened curves",
+            "reduced hip volume",
+            "slimmed glutes",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "missing phone",
+            "missing mirror reflection",
+            "facing forward",
+            "direct eye contact with lens (must look at screen)",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "distorted fingers",
+            "bad hands",
+            "extra limbs"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_3",
+      "data": {
+        "subject": {
+          "description": "Young woman with long, straight blonde hair and fair skin.",
+          "outfit": {
+            "headwear": "Large, fluffy pink faux-fur trapper hat (ushanka) with long ear flaps and drawstrings.",
+            "upper_body": "Pink, fuzzy, long-sleeved crop top, very short cut exposing the midriff and lower back.",
+            "lower_body": "High-cut pink and red lacy thong underwear."
+          },
+          "anatomy": {
+            "body_type": "Curvy and fit physique with a slim waist and significantly prominent, round buttocks.",
+            "skin": "Fair skin tone with realistic texture, visible softness, and natural skin details.",
+            "features": "Visible side profile of the chest showing fullness, accentuated gluteal curve."
+          }
+        },
+        "pose": {
+          "orientation": "Standing with back turned towards the camera (rear view).",
+          "head_position": "Head turned over the left shoulder, making direct eye contact with the viewer.",
+          "limbs": {
+            "left_arm": "Extended downwards, with the left hand fingers gently touching the left buttock/upper thigh area.",
+            "right_arm": "Bent at the elbow, hand not fully visible.",
+            "legs": "Standing straight, thighs touching."
+          },
+          "spine": "Slight arch in the lower back to accentuate the curvature of the glutes."
+        },
+        "environment": {
+          "setting": "Indoor room corner, possibly a converted residential space.",
+          "elements": [
+            "A tall, narrow window with a distinctive arched stone frame (resembling gothic or church architecture) on the left wall.",
+            "A white panel radiator mounted on the lower right wall.",
+            "Plain white or off-white painted walls."
+          ],
+          "background_details": "A wooden side table corner visible in the bottom left, a lamp shade emitting warm light on the far left edge."
+        },
+        "camera": {
+          "shot_type": "Medium shot, framing from the mid-thighs to above the head.",
+          "perspective": "Eye-level to slightly low angle, emphasizing body curvature.",
+          "focal_length": "Standard lens, approx 35mm-50mm, slight wide-angle distortion typical of smartphone photography.",
+          "depth_of_field": "Deep depth of field, keeping both the subject and the immediate background features (window, radiator) in focus."
+        },
+        "lighting": {
+          "type": "Mixed lighting with strong direct flash.",
+          "characteristics": [
+            "Direct, hard flash illuminating the subject from the front-left perspective.",
+            "Sharp, distinct drop shadow of the subject cast onto the white wall to the right.",
+            "Warm ambient glow coming from the lamp on the left side, contrasting with the cooler flash tone."
+          ]
+        },
+        "mood_and_expression": {
+          "emotion": "Alluring, confident, and flirty.",
+          "gaze": "Direct eye contact with a soft, seductive expression.",
+          "atmosphere": "Intimate and casual."
+        },
+        "style_and_realism": {
+          "aesthetic": "Amateur flash photography, candid social media style.",
+          "fidelity": "High-fidelity realism, capturing fabric textures (fuzziness of the hat and top) and skin texture accurately.",
+          "rendering": "Photorealistic, unpolished, raw visual style."
+        },
+        "colors_and_tone": {
+          "palette": "Dominant pinks (clothing), creamy whites (walls), fair skin tones.",
+          "contrast": "High contrast due to the direct flash.",
+          "white_balance": "Slightly cool from the flash, balanced by the warm yellow lamp light."
+        },
+        "quality_and_technical_details": {
+          "sharpness": "High sharpness on the subject.",
+          "noise": "Minimal grain.",
+          "lighting_artifacts": "Flash reflection and hard shadows are key technical elements."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Vertical portrait."
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "OpenPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "MiDaS",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance if present",
+              "prevent flat or compressed depth",
+              "maintain clear torso-to-background separation"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened, lifted, or artificially supported breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume",
+            "depth flattening",
+            "mirror selfies",
+            "phone-in-hand selfies",
+            "reflections",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "editorial fashion proportions",
+            "more realistic reinterpretation",
+            "naturalization of prominent features"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_4",
+      "data": {
+        "subject": {
+          "description": "Young adult female with long, straight platinum blonde hair featuring dark roots. She has a deep tan skin tone and a voluptuous, curvy physique with a very prominent bust and wide hips. She is wearing a black triangle bikini top that struggles to contain her chest volume, revealing significant cleavage and breast curvature. She wears matching black bikini bottoms, pulled high on the hips (thong style). A visible tattoo is located on her right lower abdomen/pelvis area.",
+          "anatomy": "Voluptuous hourglass figure. Heavy, full chest with natural gravitational weight, soft tissue compression against the arm and bikini top. Thighs are thick and soft, resting on the bed. Facial features include a scrunched nose expression while biting, defined jawline, and groomed eyebrows.",
+          "clothing": "Black string bikini set. The top is a simple triangle cut with thin straps. The bottoms are skimpy, resting high on the hip bone."
+        },
+        "pose": {
+          "posture": "Sitting cross-legged (tailor style) on a bed. The torso is angled slightly towards the mirror. Her weight is settled deeply into the soft mattress.",
+          "arms_and_hands": "The right arm is raised, hand holding a large slice of cheese pizza directly to her mouth, actively taking a bite. The left arm is extended forward, holding a smartphone (iPhone with a sticker-covered case) to capture a mirror selfie.",
+          "head": "Head is tilted slightly, eyes looking at the phone screen/mirror reflection. Face is partially obscured by the pizza slice.",
+          "action": "Simultaneously eating pizza and taking a mirror selfie."
+        },
+        "environment": {
+          "setting": "Hotel room or bedroom at night.",
+          "foreground": "A white bed with a textured, quilted duvet. Scattered on the bed are: an open cardboard pizza box with grease stains and the text 'OPEN 24 HOURS' (appears reversed as 'SRUOH 42 NEPO' due to mirror reflection), a white can of 'White Claw' hard seltzer, a clear plastic container with a dessert (tiramisu or cake) and a plastic spoon, and a brown luxury handbag (Louis Vuitton monogram pattern).",
+          "background": "A sliding glass door leading to a dark balcony. White vertical curtains hang to the right. A bedside lamp with a white shade is visible on the left.",
+          "context": "Casual, late-night snacking scene in a hotel room."
+        },
+        "camera": {
+          "type": "Mirror Selfie.",
+          "perspective": "Reflected view through a mirror. The camera (phone) is visible in the subject's left hand.",
+          "framing": "Medium shot, capturing the subject from the shins up to above the head, including the surrounding bed space.",
+          "focal_length": "24mm to 28mm (smartphone wide lens equivalent).",
+          "depth_of_field": "Deep depth of field, keeping both the subject on the bed and the background elements relatively sharp."
+        },
+        "lighting": {
+          "source": "Indoor artificial lighting, likely overhead warm tungsten mixed with the light from the lamp on the left.",
+          "quality": "Soft but directional, creating shadows under the legs and pizza box. There is a slight flash reflection or specular highlight on the sliding glass door.",
+          "shadows": "Natural contact shadows where the body meets the bedding and under the pizza box.",
+          "tone": "Warm, cozy, slightly yellow/orange cast typical of hotel room lighting."
+        },
+        "mood_and_expression": {
+          "mood": "Playful, candid, indulgent, relaxed.",
+          "expression": "Playful scrunched nose and closed eyes/focused gaze while taking a large bite of pizza. A 'foodie' aesthetic moment."
+        },
+        "style_and_realism": {
+          "style": "Candid social media snapshot, influencer aesthetic, flash photography realism.",
+          "realism": "Photorealistic. Accurate representation of skin texture, pizza grease, bed sheet wrinkles, and low-light grain.",
+          "textures": "Greasy cheese, soft skin with natural shine, quilted fabric of the duvet, smooth glass of the door."
+        },
+        "colors_and_tone": {
+          "palette": "Warm neutrals (whites, creams, tans) contrasted with the black bikini and the dark night background.",
+          "skin_tone": "Deep tan/bronze with warm undertones.",
+          "white_balance": "Slightly warm/yellow.",
+          "contrast": "Medium-high contrast between the bright bed/skin and the dark background."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High resolution.",
+          "noise": "Slight digital noise consistent with indoor smartphone photography.",
+          "sharpness": "Sharp focus on the subject and the pizza."
+        },
+        "aspect_ratio_and_output": {
+          "aspect_ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve sitting cross-legged posture",
+              "preserve right arm holding pizza to mouth",
+              "preserve left arm holding phone for selfie",
+              "preserve head tilt and bite action"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve foreground bed volume",
+              "preserve distance between subject and background sliding doors",
+              "maintain spatial relationship of pizza box and drinks on bed"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened or lifted breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "professional studio lighting",
+            "standing pose",
+            "looking at camera (unless via mirror)",
+            "daylight",
+            "blue light",
+            "clean room (must have clutter on bed)",
+            "closed pizza box",
+            "missing phone",
+            "third-person perspective (must be mirror selfie)",
+            "distorted fingers",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_5",
+      "data": {
+        "subject": {
+          "description": "Young woman with fair skin and long, straight brunette hair parted in the middle. She has almond-shaped hazel-green eyes, a refined nose, and full pink lips with a subtle gloss. She is wearing a tight, blue floral-print halter-neck one-piece swimsuit or bodysuit featuring bright pink flowers and green leaves. The garment has a deep plunging neckline that reveals significant cleavage.",
+          "anatomy_and_proportions": "The subject possesses an extremely voluptuous and heavy bust that is significantly above average in volume. The chest mass is full, projecting forward and outward, heavily affected by gravity due to natural weight. The bust depth is visibly greater than the ribcage depth. The torso is slender, creating a dramatic bust-to-waist ratio. Skin texture is natural with visible pores, faint freckles, and soft tissue volume.",
+          "clothing_fit": "The floral bodysuit fits tightly against the skin, conforming to the heavy curvature of the chest and waist. The fabric is strained slightly by the volume of the bust. Thin halter straps go around the neck."
+        },
+        "pose": {
+          "stance": "Standing upright with a relaxed posture.",
+          "head_position": "Head is tilted slightly downward, with the chin tucked in, looking up towards the camera through eyelashes.",
+          "limbs": "Arms are extended downwards along the sides of the body, relaxed and out of the primary focal area.",
+          "orientation": "Body is facing forward towards the camera, with a slight, subtle angle."
+        },
+        "environment": {
+          "location": "A domestic kitchen interior.",
+          "background_elements": "To the left, a wooden countertop with a mosaic tile backsplash in shades of purple, grey, and white. White cabinetry with black knobs. Kitchen utensils (spatulas, spoons) in a holder. To the right, built-in stainless steel and black double wall ovens. Wooden flooring is visible.",
+          "details": "Modern, clean, well-lit residential setting."
+        },
+        "camera": {
+          "perspective": "High-angle shot, looking down at the subject.",
+          "framing": "Medium shot, capturing the subject from the mid-thighs up to the top of the head.",
+          "focal_length": "35mm to 50mm, creating a sense of intimacy without excessive distortion.",
+          "depth_of_field": "Subject is in sharp focus; the kitchen background is slightly softened but fully distinct.",
+          "shot_type": "Eye-level relative to the high angle, emphasizing the subject's gaze and upper body volume."
+        },
+        "lighting": {
+          "source": "Soft, diffuse indoor ambient lighting, likely a mix of overhead kitchen fixtures and natural light.",
+          "direction": "Top-down and slightly frontal.",
+          "shadows": "Soft shadows visible in the cleavage and under the chin, defining the volume of the chest and facial features.",
+          "highlights": "Subtle specular highlights on the forehead, nose, and the curvature of the upper chest.",
+          "quality": "Neutral to slightly cool color temperature."
+        },
+        "mood_and_expression": {
+          "expression": "Neutral to soft, alluring gaze. Direct eye contact with a slight 'doe-eyed' look due to the camera angle.",
+          "atmosphere": "Casual, candid, intimate, domestic.",
+          "emotion": "Calm and confident."
+        },
+        "style_and_realism": {
+          "aesthetic": "High-fidelity photorealism, resembling a high-quality smartphone photo or candid DSLR shot.",
+          "texture_quality": "Ultra-detailed skin texture, realistic fabric weave, accurate material rendering for the kitchen surfaces (wood, tile, metal).",
+          "render_style": "Unfiltered, raw, authentic photography style."
+        },
+        "colors_and_tone": {
+          "palette": "Natural skin tones, vibrant blue and pink on the swimsuit, neutral whites, browns, and mosaic purples in the background.",
+          "contrast": "Moderate contrast, preserving shadow detail in the hair and background.",
+          "saturation": "Natural and lifelike, with the swimsuit colors popping against the neutral kitchen tones."
+        },
+        "quality_and_technical_details": {
+          "resolution": "8k, high definition.",
+          "sharpness": "Crisp focus on the eyes and face.",
+          "noise": "Low ISO, minimal grain."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "OpenPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement",
+              "lock head tilt and chin tuck"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "MiDaS",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance",
+              "prevent flat or compressed depth",
+              "maintain clear torso-to-background separation",
+              "ensure high-angle perspective geometry"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened or lifted breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume",
+            "depth flattening",
+            "mirror selfies",
+            "phone-in-hand selfies",
+            "reflections",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "editorial fashion proportions",
+            "more realistic reinterpretation",
+            "naturalization of prominent features",
+            "low angle",
+            "looking away"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_6",
+      "data": {
+        "subject": {
+          "description": "A young woman with long, wavy blonde hair falling over her back and shoulders. She is wearing a white knit beanie with a small circular logo patch on the cuff. She is dressed in a tight-fitting, cream or off-white ribbed jumpsuit (bodysuit/catsuit) that covers her arms, torso, and legs. The fabric is textured with vertical ribs and clings tightly to her figure, accentuating her anatomy.",
+          "physique": "fit and voluptuous hourglass figure with a very slim waist and prominently curved, full glutes. The tight fabric highlights the definition and volume of her lower body and the curve of her spine. Her bust is visible in profile due to the torso twist, appearing full and natural.",
+          "skin": "fair skin tone, smooth texture with natural lighting interaction on the face"
+        },
+        "pose": {
+          "orientation": "Rear view with a strong torso twist.",
+          "details": "The subject is standing with her back to the camera but has twisted her upper body and head to the right to look directly at the viewer. She is smiling broadly. Her hands are placed on her upper thighs/outer glutes, fingers slightly gripping the fabric of the jumpsuit. Her legs are standing slightly apart. The pose emphasizes the curvature of the lower back and glutes.",
+          "head_tilt": "Turned over the right shoulder, facing the camera",
+          "gaze": "Direct eye contact with the viewer",
+          "expression": "Bright, happy, open-mouthed smile showing teeth"
+        },
+        "environment": {
+          "setting": "Outdoor winter landscape",
+          "ground": "Covered in deep, white snow with visible footprints and shadows.",
+          "midground": "Green coniferous (pine) trees standing in the snow.",
+          "background": " majestic snow-capped mountains under a clear blue sky with light wispy clouds."
+        },
+        "camera": {
+          "shot_type": "Medium-full shot (knees up)",
+          "angle": "Eye-level or slightly low angle, positioned behind the subject to capture the over-the-shoulder look.",
+          "focal_length": "50mm to 85mm portrait lens",
+          "depth_of_field": "Subject in sharp focus, background slightly softened but distinct enough to identify mountains and trees.",
+          "perspective": "Natural perspective, preserving the depth between the subject and the mountains."
+        },
+        "lighting": {
+          "source": "Bright, direct natural sunlight (daytime)",
+          "direction": "Sun is high and positioned to the right or slightly behind the camera, illuminating the subject's face and back.",
+          "shadows": "Strong, distinct cast shadow of the subject visible on the snow to the left side of the frame.",
+          "quality": "High contrast, crisp daylight, creating highlights on the blonde hair and the texture of the ribbed fabric."
+        },
+        "mood_and_expression": {
+          "mood": "Cheerful, energetic, winter fun, confident",
+          "expression": "Radiant smile, engaging and friendly"
+        },
+        "style_and_realism": {
+          "style": "High-fidelity photorealism, social media influencer aesthetic, lifestyle photography",
+          "realism": "Photo-realistic textures (knit, ribbed fabric, snow, skin), accurate lighting physics"
+        },
+        "colors_and_tone": {
+          "palette": "Dominant whites and creams (snow, jumpsuit, hat), deep greens (trees), bright blue (sky)",
+          "tone": "Bright, cool winter tones balanced by warm skin tones and sunlight",
+          "contrast": "High dynamic range"
+        },
+        "quality_and_technical_details": {
+          "resolution": "4k, high definition",
+          "texture_details": "Visible vertical ribbing on the jumpsuit, knit pattern on the beanie, individual strands of hair, snow texture",
+          "clarity": "Sharp focus on the subject"
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "framing": "Vertical portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "OpenPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve twisting torso",
+              "preserve hand placement on thighs",
+              "preserve over-the-shoulder head turn",
+              "preserve leg stance"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve volumetric curve of glutes",
+              "maintain separation between subject and snowy background",
+              "capture fabric texture depth"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "flattened curves",
+            "reduced glute volume",
+            "slimmed hips",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "mirror selfies",
+            "phone in hand",
+            "reflections",
+            "blurry background",
+            "cartoon",
+            "illustration",
+            "3d render",
+            "painting",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "blur",
+            "extra fingers",
+            "bad hands",
+            "distorted limbs",
+            "indoor setting",
+            "summer clothing",
+            "dark lighting"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_7",
+      "data": {
+        "subject": {
+          "description": "Young woman with a voluptuous, curvy hourglass figure.",
+          "skin": "Tan to olive skin tone, smooth texture with visible highlights on the shoulder and cheekbone from overhead lighting.",
+          "attire": {
+            "top": "Cropped, backless halter-neck top. Main fabric is bright yellow, with green trim and spaghetti straps (evoking Brazilian flag colors). The top exposes the upper back and shoulders.",
+            "bottom": "High-waisted, heather grey ribbed leggings. The fabric is tight-fitting, conforming closely to the curves of the glutes and legs."
+          },
+          "anatomy": {
+            "build": "Thick, fit physique with exaggerated lower body proportions.",
+            "glutes": "Extremely prominent, round, and voluminous glutes, visually dominating the lower frame. The fabric stretches over the mass.",
+            "waist": "Narrow and tapered, creating a sharp waist-to-hip ratio.",
+            "shoulders": "Toned and visible due to the halter cut."
+          }
+        },
+        "pose": {
+          "orientation": "Standing rear 3/4 view, body angled away from the camera.",
+          "head": "Turned sharply to the left, looking back over the left shoulder directly at the viewer.",
+          "spine": "Pronounced lumbar lordosis (arched lower back) to accentuate the posterior projection.",
+          "limbs": {
+            "left_arm": "Extended downwards, with the left hand resting on the upper outer thigh/glute area, fingers splayed.",
+            "right_arm": "Partially obscured by the torso, hanging naturally.",
+            "legs": "Straight, feet planted, weight distributed to highlight the hip curve."
+          }
+        },
+        "environment": {
+          "setting": "Indoor concrete parking garage.",
+          "foreground": "A low white concrete barrier or wall directly behind the subject.",
+          "background": "Industrial ceiling with exposed grey pipes and red fire suppression pipes. A square structural pillar painted blue at the bottom with white text 'P10'. A white SUV is parked in the blurred background.",
+          "flooring": "Concrete surface."
+        },
+        "camera": {
+          "shot_type": "Medium shot, capturing the subject from mid-thigh to top of head.",
+          "angle": "Eye-level to slightly low angle, emphasizing the lower body volume.",
+          "focus": "Sharp focus on the subject, with a shallow depth of field slightly blurring the car and background elements.",
+          "perspective": "Rear-facing perspective."
+        },
+        "lighting": {
+          "type": "Overhead industrial fluorescent lighting.",
+          "quality": "Diffuse but somewhat flat, creating soft shadows on the back and defining highlights on the glossy hair and shoulder.",
+          "direction": "Top-down.",
+          "highlights": "Specular highlights on the cheekbone, nose tip, and shoulder."
+        },
+        "mood_and_expression": {
+          "expression": "Neutral to slightly sultry, lips parted slightly, confident gaze.",
+          "mood": "Casual, urban, confident, influencer-style aesthetic."
+        },
+        "style_and_realism": {
+          "style": "Photorealistic, candid social media photography.",
+          "fidelity": "High-fidelity texture rendering on the ribbed fabric and skin pores.",
+          "realism": "Unstylized, physically accurate lighting and anatomical representation."
+        },
+        "colors_and_tone": {
+          "palette": "Bright yellow and green (top), heather grey (leggings), tan (skin), concrete grey (background), touches of red (pipes) and blue (pillar).",
+          "contrast": "Moderate contrast.",
+          "saturation": "Natural, with the yellow of the top being the most saturated element."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High definition, 4k texture quality.",
+          "sharpness": "Crisp details on hair curls and fabric ribbing.",
+          "grain": "Low ISO, minimal noise."
+        },
+        "aspect_ratio_and_output": {
+          "aspect_ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve rear-facing torso twist",
+              "preserve severe lower back arch",
+              "lock head rotation looking over shoulder",
+              "maintain hand placement on thigh"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "maintain volumetric projection of glutes",
+              "distinguish subject from the concrete barrier behind",
+              "preserve spatial depth of the parking garage background"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "front view",
+            "flat buttocks",
+            "small hips",
+            "anatomy normalization",
+            "body proportion averaging",
+            "reduced volume",
+            "flattened curves",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "mirror selfies",
+            "phone in hand",
+            "distorted face",
+            "bad hands",
+            "missing fingers",
+            "cartoon",
+            "anime",
+            "sketch",
+            "painting",
+            "blur",
+            "low quality",
+            "wide angle distortion"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_8",
+      "data": {
+        "subject": {
+          "body_type": "Voluptuous hourglass figure, prominent curves, significantly full and heavy bust with natural projection and weight, slim waist, wide hips, thick thighs",
+          "skin_details": "Sun-kissed tan complexion, glossy and glistening skin texture indicative of oil or sweat, visible skin pores, natural skin tone variation",
+          "markings": "Large dark floral tattoo on the upper left thigh/hip area",
+          "clothing": "Crochet-style knit bikini with teal blue and yellow zigzag stripes, triangle halter top with visible texture, matching high-cut bikini bottoms sitting on hips",
+          "accessories": "Silver nameplate necklace, small stud earrings",
+          "facial_features": "Closed eyes, relaxed expression, full lips, high cheekbones, face angled upwards towards the sun"
+        },
+        "pose": {
+          "type": "Seated reclining pose",
+          "orientation": "Front-facing body, leaning backward supported by arms",
+          "arms": "Both arms extended behind the torso, straight with locked elbows, hands resting flat on the white cushion surface supporting weight",
+          "legs": "Legs extended forward, knees slightly bent and relaxed, thighs touching the surface",
+          "head": "Tilted back, chin pointing upwards, exposing the neck to the sunlight",
+          "spine": "Arched slightly backward due to the leaning posture",
+          "shoulders": "Pushed back and down, accentuating the chest"
+        },
+        "environment": {
+          "location": "Sunny beach setting",
+          "ground": "White sand visible in the peripheral background",
+          "props": "Large white outdoor lounge bed or daybed with thick white cushions, edge of a grey canopy or structure visible at the top right",
+          "context": "Outdoor luxury beach club or resort"
+        },
+        "camera": {
+          "shot_type": "Medium-full shot, capturing from knees to top of head",
+          "angle": "High angle, looking slightly down at the subject",
+          "focus": "Sharp focus on the subject, particularly the torso and face",
+          "perspective": "Slight foreshortening of the legs due to high angle, emphasizing the upper body and hips",
+          "depth_of_field": "Deep enough to keep the subject and immediate cushion texture in focus, sand slightly softer"
+        },
+        "lighting": {
+          "type": "Natural daylight, harsh high-noon sunlight",
+          "direction": "Overhead and slightly from the front-right",
+          "shadows": "Strong, hard cast shadow of the subject falling behind her onto the white cushion to the right",
+          "highlights": "Specular highlights on the chest, shoulders, and forehead due to oily/sweaty skin",
+          "quality": "Bright, high-contrast"
+        },
+        "mood_and_expression": {
+          "mood": "Relaxed, sensual, blissful, soaking up the sun",
+          "expression": "Serene, eyes closed, mouth slightly open in a relaxed manner",
+          "atmosphere": "Summer heat, leisure, vacation vibes"
+        },
+        "style_and_realism": {
+          "style": "Photorealistic, candid lifestyle photography",
+          "realism_level": "Raw, unfiltered reality, capturing skin texture and natural body weight distribution",
+          "rendering": "High fidelity, detailed texture rendering for the crochet fabric and skin pores"
+        },
+        "colors_and_tone": {
+          "dominant_colors": "White (cushion), Tan/Bronze (skin), Teal/Cyan and Yellow (bikini)",
+          "contrast": "High contrast between the bright highlights and dark shadows",
+          "saturation": "Natural but vibrant, emphasizing the blue of the bikini and the tan of the skin",
+          "white_balance": "Daylight balanced, slightly warm due to the sun"
+        },
+        "quality_and_technical_details": {
+          "resolution": "High resolution, sharp details",
+          "noise": "Low noise, clear image",
+          "texture_quality": "High detailed crochet knit texture, realistic skin texture with specularity"
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Vertical portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve arm support angle",
+              "preserve head tilt back",
+              "preserve leg extension",
+              "preserve shoulder width"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve bust projection and volume",
+              "maintain separation between torso and white background",
+              "prevent flattening of curves"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "reduced chest volume",
+            "flattened breasts",
+            "small bust",
+            "lifted or artificially supported breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "mirror selfies",
+            "phone-in-hand",
+            "reflections",
+            "plastic skin",
+            "airbrushed texture",
+            "matte skin",
+            "distorted hands",
+            "missing tattoos",
+            "flat lighting",
+            "low contrast",
+            "studio lighting"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_9",
+      "data": {
+        "subject": {
+          "description": "Young female subject, appearing in her early 20s, with fair skin and long, straight blonde hair cascading down her back.",
+          "attire": {
+            "headwear": "Oversized, fluffy white faux-fur trapper hat (ushanka) with ear flaps down, adding volume and texture framing the face.",
+            "body": "Tight-fitting, matte black bodysuit covering the torso, arms, and legs; fabric creates tension across curves, exhibiting realistic stretch and varying opacity based on lighting.",
+            "fit": "Form-fitting, highlighting natural body contours and physical volume without artificial smoothing."
+          },
+          "physicality": {
+            "body_type": "Curvy and fit; significant prominence in the gluteal region relative to the waist, emphasized by the rear-view angle.",
+            "skin_details": "Natural fair complexion with slight winter flush on cheeks, visible skin texture including pores and minor imperfections, soft natural lighting on the face.",
+            "hair_texture": "Smooth, straight strands with natural movement, contrasting against the dark fabric of the bodysuit."
+          }
+        },
+        "pose": {
+          "orientation": "Rear-facing, standing 3/4 turn away from the camera.",
+          "head_position": "Turned back over the left shoulder, looking directly at the viewer with a soft, engaging smile.",
+          "body_language": "Relaxed but accentuated posture; weight shifted to emphasize the curve of the hips and glutes; back slightly arched.",
+          "arms": "Arms held close to the body, elbows slightly bent, blending naturally into the silhouette."
+        },
+        "environment": {
+          "setting": "Outdoor winter landscape with deep snow cover.",
+          "background_elements": [
+            "Tall evergreen/pine trees heavily laden with white snow on branches.",
+            "Modern wooden structure or cabin on the left with vertical timber siding and large glass windows reflective of the winter light."
+          ],
+          "ground": "Thick, uneven layer of snow, showing soft shadows and texture.",
+          "atmosphere": "Cold, crisp, daytime winter ambiance."
+        },
+        "camera": {
+          "type": "Digital SLR or Mirrorless Professional Body (e.g., Sony A7R or Canon R5).",
+          "lens": "85mm prime lens to compress the background slightly while keeping the subject proportional.",
+          "aperture": "f/2.8 or f/4, creating a shallow depth of field where the subject is sharp and the background trees are softly blurred (bokeh).",
+          "angle": "Eye-level or slightly lower, focused on the subject's upper body and hips.",
+          "focus_point": "Sharp focus on the subject's face and eyes."
+        },
+        "lighting": {
+          "source": "Natural daylight, overcast or diffused sunlight typical of a snowy day.",
+          "quality": "Soft, omnidirectional light with the snow acting as a giant natural reflector (fill light), minimizing harsh shadows on the face and body.",
+          "highlights": "Subtle sheen on the black bodysuit fabric where light hits the curves; bright, clean highlights on the white fur hat.",
+          "shadows": "Soft, cool-toned shadows in the folds of the clothing and environmental recesses."
+        },
+        "mood_and_expression": {
+          "emotion": "Playful, confident, and inviting.",
+          "facial_expression": "Soft smile with lips slightly parted, eyes making direct contact with the lens.",
+          "vibe": "Candid winter influencer aesthetic, cozy yet alluring."
+        },
+        "style_and_realism": {
+          "aesthetic": "Photorealistic lifestyle photography.",
+          "fidelity": "High-fidelity texture rendering (fur, hair, fabric, snow).",
+          "processing": "Natural color grading, resembling a high-quality JPEG from camera or a standard RAW development, avoiding excessive HDR or filter effects."
+        },
+        "colors_and_tone": {
+          "palette": "High contrast between the stark white snow/hat and the deep black bodysuit.",
+          "skin_tones": "Pale, natural peach/pink tones, accurate to lighting.",
+          "white_balance": "Slightly cool (daylight/winter), but corrected for skin tones.",
+          "contrast": "Moderate to high, driven by the black-on-white composition."
+        },
+        "quality_and_technical_details": {
+          "resolution": "4K or higher equivalent.",
+          "noise": "ISO 100-200 grain structure (minimal noise).",
+          "sharpness": "High detail on the fur fibers of the hat and the fabric weave."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4 (Portrait)",
+          "framing": "Medium shot, capturing the subject from mid-thigh/knees up to the top of the hat, with some headroom and background context."
+        },
+        "controlnet": {
+          "pose_control": "OpenPose or DWPose to lock the rear-facing head-turn and hip curve.",
+          "depth_control": "DepthMap to maintain the separation between the subject and the wooded background."
+        },
+        "negative_prompt": [
+          "bad anatomy",
+          "distorted hands",
+          "missing fingers",
+          "extra limbs",
+          "floating objects",
+          "watermark",
+          "text",
+          "cartoon",
+          "3d render",
+          "illustration",
+          "painting",
+          "heavy makeup",
+          "plastic skin",
+          "oversaturated",
+          "sunburn",
+          "studio lighting",
+          "green screen"
+        ]
+      }
+    },
+    {
+      "id": "itsjessia_10",
+      "data": {
+        "subject": {
+          "description": "Young female adult with light olive to tan skin tone and long, dark, wavy hair cascading down her back. She has a curvy, fit physique with natural proportions.",
+          "clothing": {
+            "upper_body": "Tight-fitting black zip-up hoodie, zipped up, long sleeves extending past the wrists, fabric showing natural folding and tension around the waist and arms.",
+            "lower_body": "Tight grey-to-dark-grey ombr\u00e9 spandex shorts (booty shorts) that hug the hips and glutes, displaying realistic fabric stretch and texture."
+          },
+          "physical_details": {
+            "skin": "Natural skin texture with visible pores, subtle tonal variations, and no artificial smoothing. Realistic reaction to light with soft specular highlights on the cheeks.",
+            "hair": "Dark, thick, wavy hair with individual strands visible, falling naturally over the back and shoulders.",
+            "body_volume": "Preserved natural volume in the glutes and thighs, reflecting realistic mass and gravity without artificial lifting or sculpting."
+          }
+        },
+        "pose": {
+          "type": "Standing angled rear-view (approx 135 degrees).",
+          "details": "Body is turned away from the camera, highlighting the back and glutes, while the head is turned back over the left shoulder to face the viewer directly. The spine has a natural curve, accentuating the lower back. The left arm hangs mostly straight down, relaxed.",
+          "expression": "Soft, confident smile with a relaxed gaze, looking directly at the lens. Candid and approachable."
+        },
+        "environment": {
+          "setting": "Simple indoor room, likely a bedroom or hallway.",
+          "background_elements": [
+            "Large white sliding closet doors or wardrobe panels functioning as a neutral backdrop.",
+            "Beige or off-white wall trim on the left side.",
+            "Plain flooring visible at the bottom.",
+            "No clutter, minimal context."
+          ],
+          "spatial_depth": "Shallow depth of field context, subject is close to the background but distinct from it."
+        },
+        "camera": {
+          "type": "Digital Mirrorless or High-End Smartphone Camera.",
+          "lens": "35mm or 50mm equivalent focal length.",
+          "perspective": "Eye-level or slightly lower, capturing the subject from a flattering but realistic angle.",
+          "characteristics": {
+            "sensor_noise": "Subtle luminance noise to mimic high-ISO indoor shooting.",
+            "sharpness": "High sharpness on the face and clothing texture, slightly softer background.",
+            "focus": "Sharp focus on the eyes and face."
+          }
+        },
+        "lighting": {
+          "source": "Soft, diffused indoor ambient lighting.",
+          "direction": "Frontal and slightly overhead, creating soft shadows under the jawline and defining the contours of the body.",
+          "quality": "Even illumination, no harsh contrast. Highlights on the face are soft and broad, not blown out. Natural fall-off on the limbs.",
+          "shadows": "Soft, realistic contact shadows where the clothing meets the skin and in the folds of the fabric."
+        },
+        "mood_and_expression": {
+          "tone": "Casual, candid, confident, and slightly flirty.",
+          "authenticity": "Feels like a snapshot taken by a friend or a casual social media photo, avoiding a staged studio look."
+        },
+        "style_and_realism": {
+          "aesthetic": "Raw photography, unedited aesthetic.",
+          "rendering": "Photorealistic, physically based rendering (PBR) textures.",
+          "fidelity": "High fidelity to material properties (cotton blend of hoodie, spandex sheen of shorts, human skin)."
+        },
+        "colors_and_tone": {
+          "palette": "Neutral and desaturated background (whites, beiges) contrasting with the black hoodie and grey shorts. Warm skin tones.",
+          "white_balance": "Neutral to slightly warm indoor tungsten balance.",
+          "contrast": "Moderate natural contrast, preserving details in the black clothing shadows."
+        },
+        "quality_and_technical_details": {
+          "resolution": "4k, highly detailed.",
+          "textures": "Visible fabric weave, realistic hair sheen, authentic skin pores."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "composition": "Vertical portrait framing, centering the subject's upper body and hips."
+        },
+        "controlnet": {
+          "pose_control": "OpenPose matching the twist of the torso and the head turn.",
+          "depth_control": "Depth map preserving the volume of the figure against the flat background.",
+          "canny_edge": "Soft edge detection to maintain the silhouette of the hoodie and shorts."
+        },
+        "negative_prompt": [
+          "sketch",
+          "painting",
+          "cartoon",
+          "3d render",
+          "anime",
+          "plastic skin",
+          "airbrushed",
+          "too muscular",
+          "distorted anatomy",
+          "extra limbs",
+          "makeup overload",
+          "studio lighting",
+          "lens flare",
+          "bokeh overkill",
+          "floating objects",
+          "text",
+          "watermark",
+          "signature",
+          "cropped head",
+          "deformed hands",
+          "shiny plastic clothing"
+        ]
+      }
+    },
+    {
+      "id": "itsjessia_11",
+      "data": {
+        "subject": {
+          "description": "Young adult female with long, voluminous, straight platinum blonde hair parting in the middle and falling over shoulders. She has a tan complexion, blue eyes, and soft facial features with defined makeup including eyeliner and pink lipstick. Her physique is a pronounced hourglass shape with a very full, heavy bust showing significant forward projection and natural gravity, a slim waist, and wide, curvaceous hips. Skin texture is realistic with natural imperfections and smooth tanning.",
+          "apparel": {
+            "top": "Green triangle bikini top with distinct yellow piping/trim. The top is string-tied at the neck. The cups are strained by the bust volume, showing ample cleavage.",
+            "bottom": "Matching green high-cut bikini bottoms with yellow piping/trim, pulled high over the hips.",
+            "accessories": "A thin gold necklace with a small green pendant, a gold ring on the left hand, a gold bangle bracelet on the left wrist, and a black hair tie on the right wrist."
+          }
+        },
+        "pose": {
+          "stance": "Kneeling directly on the sand, facing the camera. The subject is sitting back on her heels with knees spaced apart. Her torso is upright with a slight arch in the lower back.",
+          "arms": "The left arm is bent upwards with the hand lightly grasping the left bikini strap near the collarbone/chest area. The right arm hangs naturally by her side, with the hand resting near the right thigh/sand.",
+          "head_and_gaze": "Head is upright, facing forward. Eyes are looking directly into the camera lens with a soft, confident expression."
+        },
+        "environment": {
+          "location": "A sunny public beach area near a park.",
+          "foreground": "Textured, light beige sand with visible footprints and uneven surface details.",
+          "background": "A grassy park elevation behind the beach. Elements include green bushes, tall palm trees against a blue sky, concrete picnic tables, a gray SUV parked on the right side, and a glimpse of a playground structure.",
+          "sky": "Bright blue sky with scattered soft white clouds."
+        },
+        "camera": {
+          "shot_type": "Medium shot, framing the subject from the knees up to the top of the head.",
+          "angle": "Eye-level relative to the kneeling subject, creating a direct and intimate perspective.",
+          "focal_length": "50mm to 85mm portrait lens.",
+          "depth_of_field": "Moderate depth of field; the subject is razor-sharp, while the background elements (car, trees, tables) are slightly softened but clearly distinguishable.",
+          "perspective": "Natural perspective without wide-angle distortion, preserving the true scale of the body volumes."
+        },
+        "lighting": {
+          "source": "Natural bright daylight, high noon sun.",
+          "quality": "Hard, direct sunlight creating high contrast.",
+          "shadows": "Distinct shadows cast by the hair onto the shoulders, under the chin, and under the bust. The body casts a shadow on the sand behind/beneath the knees.",
+          "highlights": "Bright highlights on the forehead, shoulders, chest, and thighs, accentuating the skin's texture and oil/sheen."
+        },
+        "mood_and_expression": {
+          "mood": "Confident, summery, relaxed, alluring.",
+          "expression": "Neutral to slightly smiling, engaging directly with the viewer."
+        },
+        "style_and_realism": {
+          "style": "High-fidelity photorealism, candid beach photography.",
+          "aesthetic": "Sharp, vibrant, and detailed, characteristic of high-quality social media or lifestyle photography.",
+          "render_quality": "8k resolution, raw photo aesthetic, no artistic stylization."
+        },
+        "colors_and_tone": {
+          "palette": "Vibrant Kelly green and yellow (bikini), warm tan and beige (skin and sand), bright azure (sky), natural greens (foliage).",
+          "contrast": "High contrast due to direct sunlight.",
+          "saturation": "Natural to slightly vibrant saturation."
+        },
+        "quality_and_technical_details": {
+          "resolution": "Masterpiece, best quality, ultra-detailed.",
+          "details": "Visible skin pores, hair strands, fabric texture of the swimwear, sand grains.",
+          "artifacts": "None."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement",
+              "lock kneeling position"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance",
+              "prevent flat or compressed depth",
+              "maintain clear torso-to-background separation",
+              "ensure bust volume projection relative to ribcage"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_concepts": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened, lifted, or artificially supported breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume",
+            "depth flattening",
+            "mirror selfies",
+            "phone-in-hand selfies",
+            "reflections",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "editorial fashion proportions",
+            "more realistic reinterpretation",
+            "naturalization of prominent features"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_12",
+      "data": {
+        "subject": {
+          "description": "Young woman with a voluptuous, hourglass figure taking a mirror selfie. She has shoulder-length blonde hair cut in a bob, parted to the side and tucked behind one ear. Her skin is fair with a natural, slightly warm tone.",
+          "attire": {
+            "top": "White ribbed sleeveless crop top, fitting tightly across the chest, ending just below the bust line.",
+            "bottom": "Grey melange boy-short style underwear with a visible elastic waistband featuring the 'Calvin Klein' logo text. The fabric conforms tightly to the hips and glutes."
+          },
+          "anatomy": {
+            "build": "Curvy and fit physique with highly accentuated proportions. Significant bust volume with natural heaviness and projection. Narrow, defined waist creating a sharp hip-to-waist ratio. Hips are wide and glutes are prominent and round, emphasized by the side profile angle. Thighs are full and soft.",
+            "details": "Natural skin texture, no visible tattoos, soft facial features."
+          }
+        },
+        "pose": {
+          "body_orientation": "Standing in side profile, facing slightly towards the right of the frame, with the torso twisted slightly towards the mirror.",
+          "limbs": {
+            "left_arm": "Raised, elbow bent, holding a smartphone up to capture the reflection.",
+            "right_arm": "Extended downwards, resting naturally near the hip/thigh.",
+            "legs": "Standing with weight primarily on the back leg, front leg slightly bent at the knee.",
+            "head": "Turned to face the mirror/phone screen directly."
+          },
+          "expression": "Neutral, relaxed gaze focused on the phone screen/mirror reflection."
+        },
+        "environment": {
+          "setting": "Interior room, likely a bedroom or living area, facing a large glass balcony door or floor-to-ceiling window.",
+          "background": "The reflection in the glass shows a high-rise city skyline with multiple skyscrapers and buildings under a cloudy sky, suggesting late afternoon or sunset. A blurred cart with various bottles is visible in the room behind the subject.",
+          "elements": "Glass surface creating reflections, architectural lines of the window frame."
+        },
+        "camera": {
+          "type": "Mirror selfie shot with a smartphone.",
+          "perspective": "Eye-level relative to the subject, capturing the reflection in a glass surface.",
+          "framing": "Medium shot (knees up), centered on the subject's body curve.",
+          "device_visible": "Blue/Grey smartphone (iPhone Pro style with three cameras) held in the left hand."
+        },
+        "lighting": {
+          "source": "Natural daylight entering from the exterior window/balcony behind the subject (in reality) and reflected in the mirror.",
+          "quality": "Soft, diffused natural light with a slightly warm golden hour cast.",
+          "shadows": "Soft shadows defining the musculature of the abdomen and the curve of the spine; subtle shading on the side of the face away from the light source."
+        },
+        "mood_and_expression": {
+          "vibe": "Casual, confident, candid, influencer-style.",
+          "emotion": "Relaxed, self-assured."
+        },
+        "style_and_realism": {
+          "aesthetic": "Realistic social media snapshot, high fidelity.",
+          "rendering": "Photorealistic, sharp focus on the subject, slightly softer focus on the reflected city background."
+        },
+        "colors_and_tone": {
+          "palette": "Neutral tones (white, grey, skin tones) contrasted with the cooler blues and greys of the city reflection.",
+          "contrast": "Moderate contrast, preserving detail in both the bright exterior reflection and the subject's attire."
+        },
+        "quality_and_technical_details": {
+          "sharpness": "High",
+          "noise": "Low to moderate (simulating smartphone camera sensor).",
+          "details": "Fabric texture of the ribbed top and cotton shorts is visible."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement",
+              "preserve head rotation"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance",
+              "prevent flat or compressed depth",
+              "maintain clear torso-to-background separation",
+              "preserve exact shape of glutes and bust"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "anatomy": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened or lifted breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "editorial fashion proportions",
+            "missing limbs",
+            "distorted hands"
+          ],
+          "camera_and_lighting": [
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "depth flattening",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "overexposed",
+            "underexposed"
+          ],
+          "framing_and_content": [
+            "cropping that removes volume",
+            "more realistic reinterpretation",
+            "naturalization of prominent features"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_13",
+      "data": {
+        "subject": {
+          "description": "Adult female with a fit, voluptuous, and athletic physique seated on a boat.",
+          "anatomy": {
+            "body_type": "Curvy and muscular, prominent hourglass figure.",
+            "bust": "Full, heavy, and voluptuous bust volume; clear forward and outward projection; natural gravity behavior affecting the shape; bust depth significantly greater than ribcage depth; no compression or minimization.",
+            "torso": "Toned abdominal muscles with visible linea alba and oblique definition; wet skin texture with distinct water droplets.",
+            "limbs": "Muscular, thick thighs with smooth skin texture; arms supporting weight behind the body.",
+            "skin": " deeply tanned, glowing, wet with oil or water sheen, visible pores and skin texture, realistic imperfections."
+          },
+          "clothing": "Beige/cream colored crochet or knit bikini; triangle top with thin straps; side-tie bikini bottoms; fabric texture visible."
+        },
+        "pose": {
+          "posture": "Seated on the white edge (gunwale) of a boat; leaning back slightly with weight supported by hands placed behind the hips.",
+          "head_and_neck": "Head tilted back and slightly to the left; chin lifted; neck exposed showing relaxed musculature.",
+          "limbs": "Arms extended back and locked at elbows to support torso; legs bent at the knees; thighs spread naturally; relaxed seated position.",
+          "orientation": "Body angled slightly to the right relative to the camera; face in semi-profile."
+        },
+        "environment": {
+          "location": "Open ocean on a boat deck during twilight.",
+          "background": "Calm sea water reflecting the sky; silhouette of distant mountainous islands or coastline; another boat anchored in the distance on the left.",
+          "sky": "Sunset/dusk sky with a gradient of soft orange, pink, and purple transitioning to dark blue.",
+          "props": "White fiberglass boat surface (gunwale) where the subject is sitting."
+        },
+        "camera": {
+          "shot_type": "Medium shot (knees up to head).",
+          "angle": "Slightly low angle to eye-level; emphasizes body volume and stature.",
+          "focus": "Sharp focus on the subject; background slightly soft but distinct.",
+          "perspective": "Natural perspective; no wide-angle distortion.",
+          "depth_of_field": "Moderate; separation between subject and background due to lighting and distance."
+        },
+        "lighting": {
+          "type": "Mixed lighting: Natural sunset backlight combined with strong on-camera flash or fill light.",
+          "direction": "Backlight from the sunset (behind subject); Frontal fill flash (direct on subject).",
+          "qualities": "High contrast on the subject due to flash; specular highlights on wet skin, chest, and thighs; soft ambient glow from the horizon.",
+          "shadows": "Hard shadows cast by the flash on the boat surface; natural shading on the body contours."
+        },
+        "mood_and_expression": {
+          "expression": "Blissful smile; eyes closed or squinting in enjoyment; relaxed and sensual demeanor.",
+          "mood": "Serene, happy, confident, enjoying the moment, summery, vacation vibes."
+        },
+        "style_and_realism": {
+          "style": "Hyper-realistic photography; flash photography aesthetic.",
+          "fidelity": "Raw, unpolished realism regarding skin texture and wetness; high fidelity to physical proportions.",
+          "aesthetic": "Instagram vacation aesthetic; high-end travel photography."
+        },
+        "colors_and_tone": {
+          "palette": "Warm skin tones (tan, bronze), creamy beige (bikini), sunset gradients (orange, coral, violet), deep ocean blues.",
+          "contrast": "High contrast between the illuminated subject and the darker twilight background.",
+          "saturation": "Rich and vibrant, particularly the sunset colors and skin warmth."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High definition, 8k.",
+          "texture_quality": "Detailed crochet fabric weave; realistic water droplets; skin pores; wet hair strands.",
+          "noise": "Low ISO, clean image."
+        },
+        "aspect_ratio_and_output": {
+          "aspect_ratio": "3:4",
+          "framing": "Vertical orientation; subject centered horizontally; headspace allows for sunset view."
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "OpenPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement",
+              "preserve head tilt"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "MiDaS",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance",
+              "maintain clear torso-to-background separation",
+              "ensure volumetric accuracy of bust and thighs"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_content": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened or artificially supported breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume",
+            "depth flattening",
+            "mirror selfies",
+            "phone-in-hand selfies",
+            "reflections",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "editorial fashion proportions",
+            "more realistic reinterpretation",
+            "naturalization of prominent features",
+            "dry skin",
+            "matte skin"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_14",
+      "data": {
+        "subject": {
+          "description": "Young adult female with tanned skin and blonde hair featuring visible dark roots.",
+          "attire": {
+            "upper_body": "Black underwire push-up bra, smooth texture.",
+            "lower_body": "Black bikini-cut panties with a distinct white elastic waistband.",
+            "footwear": "Black strappy high-heel sandals with ankle accents.",
+            "accessories": [
+              "Thick silver diamond or crystal choker necklace.",
+              "Dangling silver earrings.",
+              "Silver bracelets on both wrists."
+            ]
+          },
+          "anatomy_and_features": {
+            "body_type": "Slim, fit physique with visible curvature.",
+            "skin_texture": "Smooth, tanned, consistent skin tone.",
+            "tattoos": "Large, detailed black ink tattoo covering the outer left thigh and hip area.",
+            "hair_styling": "Long blonde hair being pulled back by hands, messy texture, dark roots visible at the hairline."
+          }
+        },
+        "pose": {
+          "type": "Crouching/Squatting perch on a table surface.",
+          "mechanics": {
+            "legs": "Deep squat, knees bent fully, feet planted flat in heels on the table surface.",
+            "torso": "Upright posture, balanced over heels.",
+            "arms": "Both arms raised, elbows bent outward, hands positioned at the back of the head adjusting hair.",
+            "head": "Tilted downward, gaze directed towards the table or lap."
+          },
+          "interaction": "Subject is physically positioned directly on top of a set dining table, surrounded by dishes."
+        },
+        "environment": {
+          "setting": "Luxurious dining room interior.",
+          "surface": "Grey and white marble dining table.",
+          "objects_on_table": [
+            "White plate with an omelet topped with red sauce/salsa (foreground center).",
+            "Basket of pastries and croissants (mid-left).",
+            "Tall glasses filled with orange and red juice.",
+            "Multiple silver teapots and coffee pots.",
+            "White teacups and saucers.",
+            "Various breakfast plates scattered around the subject's feet."
+          ],
+          "background_elements": {
+            "art": "Large framed abstract painting with cubist influence, featuring beige, brown, black, and cream tones.",
+            "walls": "White walls with decorative molding/wainscoting.",
+            "windows": "Large window on the right with sheer white floor-length curtains.",
+            "ceiling": "Recessed tray ceiling with warm ambient lighting and a glimpse of a crystal chandelier."
+          }
+        },
+        "camera": {
+          "perspective": "Eye-level relative to the crouching subject, slightly elevated relative to the floor.",
+          "focal_length": "Wide-angle lens (approx 24mm-35mm) capturing the full table width and ceiling height.",
+          "depth_of_field": "Deep depth of field; sharp focus retained from the foreground food to the background painting.",
+          "composition": "Centered subject, vertical framing, encompassing the table spread and room decor."
+        },
+        "lighting": {
+          "type": "Mixed indoor ambient and daylight.",
+          "sources": [
+            "Natural diffused daylight entering from the right (window).",
+            "Warm overhead recessed ceiling lights.",
+            "Ambient room reflection."
+          ],
+          "characteristics": "Soft, relatively flat lighting with no dramatic contrast. Slight shadow cast directly beneath the subject's feet on the marble.",
+          "quality": "Realistic interior illumination, slightly unpolished, not cinematically graded."
+        },
+        "mood_and_expression": {
+          "expression": "Neutral, focused downward, seemingly unaware of the camera or caught in a candid motion of fixing hair.",
+          "vibe": "Spontaneous, wealthy lifestyle snapshot, slightly provocative context (standing on table) but casual demeanor."
+        },
+        "style_and_realism": {
+          "aesthetic": "High-quality social media snapshot, influencer lifestyle photography.",
+          "fidelity": "Absolute photographic replication.",
+          "rendering": "Photorealistic texture rendering for skin, marble, food, and fabric.",
+          "imperfections": "Retain slight lens distortion from wide angle, preserve natural skin texture without excessive smoothing."
+        },
+        "colors_and_tone": {
+          "white_balance": "Slightly warm/yellow cast typical of indoor tungsten mixed with daylight.",
+          "palette": [
+            "Warm whites (walls, plates, curtains).",
+            "Beige and brown (painting, pastries).",
+            "Black (clothing, painting accents).",
+            "Pop of red and orange (juice, food)."
+          ],
+          "saturation": "Natural, true-to-life saturation levels.",
+          "contrast": "Moderate contrast, preserving detail in both white curtains and black lingerie."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High fidelity.",
+          "sharpness": "High sharpness across the frame.",
+          "noise": "Low visible noise, typical digital camera output."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Vertical portrait."
+        },
+        "controlnet": {
+          "pose_control": "Exact replication of the crouching squat on table.",
+          "depth_control": "Match the spatial relationship between the foreground food, mid-ground subject, and background wall."
+        },
+        "negative_prompt": [
+          "color correction",
+          "white balance correction",
+          "cinematic lighting",
+          "dramatic shadows",
+          "bokeh",
+          "blurred background",
+          "standing on floor",
+          "empty table",
+          "blue tones",
+          "cool tones",
+          "painting style",
+          "illustration",
+          "3d render",
+          "beautified skin smoothing"
+        ]
+      }
+    },
+    {
+      "id": "itsjessia_15",
+      "data": {
+        "subject": {
+          "description": "Young woman with long, straight, auburn-red hair and fair skin featuring prominent natural freckles on her face and shoulders.",
+          "body_type": "Fit and curvy physique with a slender waist, wider hips, and prominent glutes accentuated by the pose. Chest volume is visible in profile, appearing natural and gravity-affected.",
+          "clothing": "Black string bikini set. The top has triangular cups, and the bottoms are a thong style with side ties.",
+          "skin_details": "Realistic skin texture with visible pores, freckles, and sand grains sticking to the skin, particularly on the buttocks and thighs.",
+          "hair_details": "Long, reddish-brown hair cascading down the back, slightly tousled by the wind."
+        },
+        "pose": {
+          "orientation": "Lying prone on the stomach on a sandy beach, pushing the upper body up with extended arms in a cobra-like stretch.",
+          "head_position": "Head turned over the left shoulder, looking directly at the camera with a soft smile.",
+          "limb_placement": "Arms are straight and supporting the torso. Legs are extended back on the sand. The torso is twisted slightly to allow the backward glance.",
+          "weight_distribution": "Weight supported by hands and hips/thighs on the sand."
+        },
+        "environment": {
+          "location": "Tropical beach setting during the day.",
+          "foreground": "White, textured sand with scattered small pebbles and debris.",
+          "midground": "Ocean water meeting the shore, with some dark rocks visible on the left side.",
+          "background": "Expansive sky with white cumulus clouds against a blue backdrop.",
+          "context": "Outdoor vacation snapshot."
+        },
+        "camera": {
+          "shot_type": "Medium shot capturing the subject from the thighs up to the head.",
+          "angle": " slightly low angle, positioned behind and to the side of the subject, emphasizing the curve of the spine and hips.",
+          "perspective": "Three-dimensional depth with clear separation between the subject and the horizon.",
+          "focal_length": "Standard portrait lens (approx 50mm to 85mm), avoiding wide-angle distortion."
+        },
+        "lighting": {
+          "source": "Natural daylight, slightly diffused by clouds.",
+          "direction": "Overhead and ambient.",
+          "quality": "Soft but bright, creating gentle shadows under the body and highlighting the curves of the muscles and skin.",
+          "shadows": "Natural occlusion shadows where the body contacts the sand."
+        },
+        "mood_and_expression": {
+          "mood": "Relaxed, confident, alluring, and summery.",
+          "expression": "Gentle, approachable smile with direct eye contact.",
+          "atmosphere": "Carefree beach vibe."
+        },
+        "style_and_realism": {
+          "style": "Photorealistic candid photography.",
+          "realism_level": "High fidelity, indistinguishable from a real photograph. Preserves skin imperfections, sand texture, and natural body physics.",
+          "aesthetic": "Natural light photography, travel influencer aesthetic."
+        },
+        "colors_and_tone": {
+          "palette": "Natural tones: beige/white sand, turquoise/blue ocean, blue sky, warm skin tones, dark black bikini.",
+          "contrast": "Moderate contrast consistent with daylight.",
+          "saturation": "Natural and vibrant without being oversaturated."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High definition, 8k.",
+          "sharpness": "Sharp focus on the subject, particularly the face and eyes, with a natural depth of field falloff in the background.",
+          "texture_quality": "High detail on sand grains and skin texture."
+        },
+        "aspect_ratio_and_output": {
+          "aspect_ratio": "3:4",
+          "framing": "Subject centered horizontally, grounded in the lower half of the frame."
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "OpenPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "MiDaS",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance if present",
+              "prevent flat or compressed depth",
+              "maintain clear torso-to-background separation"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_content": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened, lifted, or artificially supported breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume",
+            "depth flattening",
+            "mirror selfies",
+            "phone-in-hand selfies",
+            "reflections",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "editorial fashion proportions",
+            "more realistic reinterpretation",
+            "naturalization of prominent features"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_16",
+      "data": {
+        "subject": {
+          "description": "Young woman, early 20s, with a curvy, voluptuous physique. Skin is tanned with natural texture. Hair is dark brown with heavy, chunky blonde highlights (balayage), styled into two long braids hanging down the back with loose blonde strands framing the face.",
+          "anatomy": {
+            "body_type": "Hourglass with prominent lower body curves. Glutes are visually dominant, full, and round, emphasized by the tight clothing. Waist is slim. Shoulders are relaxed.",
+            "bust": "Visible in profile/side view, appearing moderate to full with natural gravity, contained within a strapless top.",
+            "arms": "Left arm is visible, featuring several fine-line black ink tattoos: the word 'BABE' in a rectangle box on the upper bicep, a flower/rose on the forearm, and other small symbols.",
+            "face": "Oval face shape, defined jawline. Makeup includes sharp winged eyeliner, sculpted eyebrows, and matte mauve lipstick. Expression is a soft pout with a confident, sultry gaze."
+          },
+          "clothing": {
+            "top": "Black strapless tube top (bandeau), tight-fitting, cropped at the waist.",
+            "bottoms": "Mauve/dusty pink tight athletic shorts with a 'scrunch butt' or ruched seam detail in the back to accentuate glutes. The shorts feature cargo-style pockets on the sides with button flaps."
+          }
+        },
+        "pose": {
+          "type": "Seated twisting pose.",
+          "description": "Subject is sitting on a wooden stool, body angled away from the camera. She twists her torso to the left to look back over her left shoulder directly at the viewer. Her back is arched slightly. Her left hand is raised, playfully holding the tip of her left braid. Her legs are bent at the knees, seated firmly.",
+          "orientation": "Rear-quarter view, face turned to camera."
+        },
+        "environment": {
+          "setting": "Modern, bright residential interior, likely a living room or sunroom.",
+          "details": [
+            "A large potted artificial olive tree in a woven basket on the left.",
+            "Light wood plank flooring.",
+            "Background features large floor-to-ceiling sliding glass doors.",
+            "Through the glass, an outdoor patio is visible with a white pergola, outdoor dining table, and chairs.",
+            "Trees and greenery visible outside in bright daylight."
+          ]
+        },
+        "camera": {
+          "shot_type": "Medium shot (thighs up).",
+          "perspective": "Slightly above eye-level, looking down at the seated subject.",
+          "focal_length": "50mm to 85mm portrait lens.",
+          "depth_of_field": "Subject in sharp focus, background slightly softened but detailed (f/2.8 or f/4)."
+        },
+        "lighting": {
+          "type": "Natural daylight mixed with interior ambient light.",
+          "direction": "Strong natural light coming from the background (glass doors) creating a rim light effect on the hair and shoulders.",
+          "quality": "Soft, diffused lighting on the face (fill light), minimizing harsh shadows. Accurate skin tones with warm highlights.",
+          "shadows": "Soft shadows on the subject's back and under the stool."
+        },
+        "mood_and_expression": {
+          "mood": "Confident, influencer-aesthetic, relaxed, slightly flirtatious.",
+          "expression": "Direct eye contact, lips slightly parted or pouted, neutral to alluring expression."
+        },
+        "style_and_realism": {
+          "style": "High-fidelity photorealism, social media influencer photography style.",
+          "realism": "Extreme. Skin texture, pore visibility, fabric weave on shorts, and tattoo clarity must be preserved. No painting or illustration effects."
+        },
+        "colors_and_tone": {
+          "palette": "Neutral tones (beige, wood, white) with accents of black (top) and mauve/dusty pink (shorts).",
+          "tone": "Warm, bright, slightly desaturated background to make the subject pop. High contrast in the foreground details."
+        },
+        "quality_and_technical_details": {
+          "resolution": "8k uhd",
+          "details": "Sharp focus, high dynamic range, preserved micro-details in tattoos and hair strands."
+        },
+        "aspect_ratio_and_output": {
+          "aspect_ratio": "3:4",
+          "output_format": "Vertical portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve twist of torso",
+              "preserve left hand holding braid",
+              "preserve seated position on stool",
+              "preserve head turn angle"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve volumetric shape of glutes and hips",
+              "maintain separation between subject and background glass doors",
+              "keep olive tree in accurate foreground depth"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "mirror selfie",
+            "phone in hand",
+            "holding camera",
+            "flat buttocks",
+            "reduced glutes",
+            "skin smoothing",
+            "airbrushed skin",
+            "plastic texture",
+            "cartoon",
+            "anime",
+            "sketch",
+            "low resolution",
+            "blur",
+            "distortion",
+            "missing tattoos",
+            "wrong tattoo text",
+            "anatomical normalization",
+            "body proportion averaging",
+            "slimmed hips",
+            "aesthetic proportion correction"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_17",
+      "data": {
+        "subject": {
+          "description": "Young female adult with a curvy, fit physique, featuring wide hips, thick thighs, and prominent glutes accurately reflecting the reference image. She has long, dark, slightly wavy hair that falls past her mid-back. Her skin tone is tan/olive.",
+          "outfit": "A matching two-piece athletic set in Brazilian flag colors. The top is a tight green crop top with short sleeves and yellow trim/stripes on the cuffs and hem. The bottom consists of tight, yellow booty shorts with green trim along the edges and seams. The fabric appears stretchy and form-fitting.",
+          "anatomy_focus": "The pose emphasizes the lower body curves, specifically the glutes and thighs. The waist is tapered. The side profile of the chest is visible, maintaining natural volume and gravity without compression."
+        },
+        "pose": {
+          "type": "Standing mirror selfie with a torso twist.",
+          "details": "The subject is standing with her back angled towards the mirror, twisting her torso to the left to face her reflection. Her weight is shifted onto her left leg, with the right leg slightly bent and heel raised. Her left arm is extended outwards, resting her hand high on a white door frame for balance or posing. Her right arm is bent, holding a light pink iPhone Pro vertically to capture the reflection.",
+          "orientation": "Rear-quarter view turned into a profile/front reflection."
+        },
+        "environment": {
+          "setting": "Indoor domestic space, likely a bedroom or living area.",
+          "elements": "The image is framed within a large mirror. To the right, a white door frame is prominent. In the background, there is a counter or table with a black backpack, a water bottle, and other scattered items. A shelving unit with wooden accents and a wall-mounted television screen (off) are visible in the distance. The floor is tiled in a light neutral color.",
+          "context": "Casual, candid home environment."
+        },
+        "camera": {
+          "perspective": "Mirror selfie perspective. The camera is the phone held by the subject, capturing the reflection.",
+          "angle": "Eye-level relative to the reflection, slightly angled down to capture the full body outfit.",
+          "framing": "Medium shot, cutting off at the lower thighs/knees, capturing the subject from head to mid-thigh within the mirror frame.",
+          "focal_length": "Standard smartphone wide lens (approx 24-26mm equivalent)."
+        },
+        "lighting": {
+          "type": "Indoor artificial lighting.",
+          "quality": "Soft, diffuse overhead light. No harsh directional shadows on the subject. The lighting is even, illuminating the skin and clothing textures clearly.",
+          "direction": "Overhead, slightly from the front relative to the mirror.",
+          "shadows": "Soft shadows cast on the floor and background furniture."
+        },
+        "mood_and_expression": {
+          "mood": "Confident, casual, body-positive.",
+          "expression": "Focused on the phone screen, checking the angle/photo, lips slightly parted or neutral.",
+          "atmosphere": "Relaxed, everyday documentation."
+        },
+        "style_and_realism": {
+          "style": "Hyper-realistic amateur photography/social media snapshot.",
+          "rendering": "High fidelity texture rendering for skin, hair, and fabric. Unstylized, raw visual approach typical of a high-quality smartphone camera.",
+          "aesthetic": "Brazil-core, fitness aesthetic."
+        },
+        "colors_and_tone": {
+          "palette": "Dominant yellow and green (outfit), neutral beige/white (walls and floor), dark brown/black (hair and furniture).",
+          "saturation": "Natural, with the outfit colors popping vibrantly against the neutral background.",
+          "contrast": "Moderate contrast, preserving details in the dark hair and bright clothing."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High resolution.",
+          "sharpness": "Sharp focus on the subject, slightly softer background due to depth of field.",
+          "texture_quality": "Detailed skin texture, fabric weave visibility, realistic hair strands."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "OpenPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement",
+              "lock hand on door frame",
+              "lock hand holding phone"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "MiDaS",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve glute volume and projection",
+              "maintain separation between arm and door frame",
+              "preserve foreground mirror frame"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "anatomy": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "flattened buttocks",
+            "reduced hip width",
+            "slimmed thighs",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "missing phone",
+            "missing mirror reflection"
+          ],
+          "visuals": [
+            "cartoon",
+            "illustration",
+            "painting",
+            "sketch",
+            "blur",
+            "noise",
+            "watermark",
+            "text",
+            "overlay",
+            "CGI",
+            "3D render",
+            "airbrushed skin",
+            "plastic skin",
+            "studio lighting"
+          ],
+          "camera": [
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_18",
+      "data": {
+        "subject": {
+          "description": "Young woman with tanned skin and short dark brown bob hair featuring a center part. She has a natural, slightly sun-flushed complexion with visible moles and skin texture on her back and arms. She is wearing a hot pink, hand-crocheted bikini set. The top has triangle cups with string ties, and the bottom is a thong style with side ties, highlighting the gluteal curve. The anatomy is natural and unretouched, showing real skin displacement and gravity effects.",
+          "clothing": "Hot pink crochet bikini set, knitted texture visible, string ties, thong bottom.",
+          "physique": "Natural, fit physique. Shoulders are relaxed, spine is curved due to the crouching pose. Visible shoulder blade definition. Bust volume is natural and affected by the side-view gravity of the pose. Glutes are prominent due to the deep squat."
+        },
+        "pose": {
+          "type": "Deep squat / crouch",
+          "orientation": "3/4 back view, twisting torso to the left",
+          "limbs": "Legs bent deeply at the knees in a squatting position. Right arm extended downwards and outwards for balance. Left arm bent, hand resting near the left knee. Torso twisted to allow head to turn fully towards the camera.",
+          "head_tilt": "Turned left, tilted slightly up towards the high-angle camera.",
+          "dynamics": "Static balance pose on uneven terrain."
+        },
+        "environment": {
+          "setting": "Rocky coastal shoreline.",
+          "foreground": "Rough, grey, textured natural stone and rock formations. Uneven steps or layered rocks.",
+          "background": "Clear, shallow sea water with visible rocky bottom, transitioning to deeper water. Sunlight reflects off the water surface.",
+          "props": "None, natural environment only."
+        },
+        "camera": {
+          "angle": "High angle / Overhead shot",
+          "shot_type": "Full body / Medium-full shot",
+          "framing": "Subject centered but lower in frame due to squat, looking up at lens.",
+          "perspective": "Perspective distortion typical of a smartphone camera from a high angle, emphasizing the head and upper body relative to the lower body.",
+          "focus": "Sharp focus on the subject's face and upper body, slight depth of field falloff in the water background."
+        },
+        "lighting": {
+          "type": "Natural daylight / Direct sun",
+          "direction": "Overhead, slightly from the right",
+          "quality": "Hard, high-contrast sunlight creating distinct shadows. Dappled shadows from nearby rocks or foliage are visible on the ground.",
+          "shadows": "Sharp, dark shadows cast by the subject onto the rocks. Highlights on the shoulders and nose.",
+          "skin_rendering": "Subsurface scattering visible on sunlit skin areas, realistic gloss/sheen from heat or water."
+        },
+        "mood_and_expression": {
+          "mood": "Candid, playful, summer vacation vibe.",
+          "expression": "Pouty, engaging, direct eye contact.",
+          "atmosphere": "Casual, unposed 'snapshot' aesthetic."
+        },
+        "style_and_realism": {
+          "aesthetic": "Raw photorealism, candid snapshot style, unpolished.",
+          "fidelity": "High fidelity to natural textures (rock, skin, knitted fabric).",
+          "render_style": "Digital photography, resembling a high-quality smartphone capture.",
+          "imperfections": "Preserves skin texture, moles, uneven tan lines, and natural lighting variations."
+        },
+        "colors_and_tone": {
+          "palette": "Natural earth tones (grey rocks, blue water) contrasted with vivid hot pink bikini and warm tan skin.",
+          "saturation": "Natural to slightly vibrant (specifically the pink).",
+          "contrast": "High contrast due to direct sunlight.",
+          "white_balance": "Daylight balanced, slightly warm."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High resolution",
+          "sharpness": "High",
+          "noise": "Minimal, consistent with digital ISO 100-200.",
+          "details": "Visible knit stitches in bikini, pore-level skin detail, rock surface texture."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "cropping": "No cropping, full frame framing."
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve deep squat mechanism",
+              "lock spinal twist",
+              "maintain head turn angle",
+              "keep arm balance positions"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve high angle perspective",
+              "maintain distinct separation between subject and rocky ground",
+              "keep foreground rock texture geometry"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "anatomy": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "reduced chest volume",
+            "flattened features",
+            "perfect skin",
+            "airbrushed skin",
+            "plastic texture",
+            "doll-like face",
+            "symmetrical face"
+          ],
+          "composition": [
+            "low angle",
+            "eye level",
+            "studio lighting",
+            "soft lighting",
+            "bokeh overload",
+            "mirror selfie",
+            "phone in hand",
+            "reflections"
+          ],
+          "style": [
+            "3d render",
+            "painting",
+            "sketch",
+            "cartoon",
+            "anime",
+            "illustration",
+            "vector art",
+            "glamour filter",
+            "instagram filter",
+            "beautification"
+          ]
+        }
+      }
+    },
+    {
+      "id": "itsjessia_19",
+      "data": {
+        "subject": {
+          "description": "A woman with long, wavy, honey-blonde hair parted in the middle, standing outdoors. She has a voluptuous, hourglass figure with a prominent, full bust and wide hips. She is wearing a tight-fitting, red and blue Spider-Man themed bodysuit or one-piece swimsuit. The suit features a high mock neck, a large black spider emblem on the chest, and a web pattern on the red sections. The bottom part is blue with high-cut leg openings. Her skin is fair with natural texture, and she is barefoot. Her makeup is soft and natural.",
+          "anatomy_constraints": "Preserve exact body proportions. Bust volume must be full, heavy, and clearly projecting, matching the reference. Hips are wide and curvy. Thighs are thick and natural. Do not reduce or normalize chest size or body curves."
+        },
+        "pose": {
+          "description": "Standing full-body pose. Both hands are raised to the sides of her head, fingers lightly touching her hair or temples, with elbows flared outward. The spine is arched slightly. Weight is shifted onto her left leg (viewer's right), while her right leg is bent at the knee with the foot placed slightly forward and the heel on the ground. Her head is tilted slightly to her right, and she is looking directly at the camera with a soft, confident gaze.",
+          "orientation": "Front-facing, slightly angled to the viewer's left."
+        },
+        "environment": {
+          "setting": "Outdoors in a backyard or garden area.",
+          "background": "A dense, tall wall of green leafy hedges (likely Ficus nitida) filling the entire background behind the subject. The leaves are vibrant green.",
+          "ground": "A light gray concrete or paved patio surface. A small strip of dark artificial turf or edging is visible at the base of the hedge. There are a few scattered dry leaves on the concrete."
+        },
+        "camera": {
+          "shot_type": "Full body shot.",
+          "perspective": "Eye-level to slightly low angle, capturing the subject from head to toe.",
+          "focal_length": "Standard lens, approximately 35mm to 50mm, avoiding wide-angle distortion.",
+          "framing": "Vertical orientation. Subject is centered horizontally."
+        },
+        "lighting": {
+          "type": "Natural daylight, direct sunlight.",
+          "direction": "Light source coming from the upper left, casting distinct shadows of the subject onto the hedge and ground to her right.",
+          "quality": "Bright and clear, creating highlights on the hair, shoulders, and the sheen of the swimsuit fabric. Shadows are relatively sharp but filled by ambient daylight."
+        },
+        "mood_and_expression": {
+          "mood": "Confident, alluring, playful.",
+          "expression": "Neutral to slightly smiling with a soft, engaging gaze."
+        },
+        "style_and_realism": {
+          "style": "High-fidelity realistic photograph.",
+          "rendering": "Photorealistic, sharp details, accurate material textures (spandex suit, skin, leaves, concrete)."
+        },
+        "colors_and_tone": {
+          "palette": "Vibrant primary colors (red, blue) of the suit contrasting with the natural lush greens of the hedge and the neutral light gray of the ground.",
+          "skin_tone": "Fair, natural, warm undertones.",
+          "white_balance": "Daylight balanced."
+        },
+        "quality_and_technical_details": {
+          "resolution": "High resolution, sharp focus on the subject.",
+          "details": "Visible fabric weave, skin pores, hair strands, individual leaves in the background."
+        },
+        "aspect_ratio_and_output": {
+          "ratio": "3:4",
+          "orientation": "Portrait"
+        },
+        "controlnet": {
+          "pose_control": {
+            "model_type": "DWPose",
+            "purpose": "Exact skeletal and pose lock",
+            "constraints": [
+              "preserve shoulder width",
+              "preserve hip angle",
+              "preserve spine curvature",
+              "preserve limb placement"
+            ],
+            "recommended_weight": 1.0
+          },
+          "depth_control": {
+            "model_type": "ZoeDepth",
+            "purpose": "Depth, volume, and camera-to-body spatial lock",
+            "constraints": [
+              "preserve chest foreground dominance",
+              "prevent flat or compressed depth",
+              "maintain clear torso-to-background separation"
+            ],
+            "recommended_weight": 0.8
+          }
+        },
+        "negative_prompt": {
+          "forbidden_elements": [
+            "anatomy normalization",
+            "body proportion averaging",
+            "smaller bust than reference",
+            "reduced chest volume",
+            "flattened or compressed breasts",
+            "tightened, lifted, or artificially supported breasts",
+            "slimmed torso",
+            "aesthetic proportion correction",
+            "beauty standard enforcement",
+            "dataset-average female anatomy",
+            "camera angles that reduce volume",
+            "wide-angle distortion not in reference",
+            "lens compression not in reference",
+            "cropping that removes volume",
+            "depth flattening",
+            "mirror selfies",
+            "phone-in-hand selfies",
+            "reflections",
+            "beautification filters",
+            "skin smoothing",
+            "plastic skin",
+            "airbrushed texture",
+            "stylized realism",
+            "editorial fashion proportions",
+            "more realistic reinterpretation",
+            "naturalization of prominent features"
+          ]
+        }
+      }
+    }
+  ]
+}
