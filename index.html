@@ -219,7 +219,7 @@
         // Load data with progress tracking
         async function loadData() {
             try {
-                const response = await fetch('categorized_prompts.json');
+                const response = await fetch('categorized_prompts_generic.json');
                 const reader = response.body.getReader();
                 const contentLength = +response.headers.get('Content-Length');
                 let receivedLength = 0;
