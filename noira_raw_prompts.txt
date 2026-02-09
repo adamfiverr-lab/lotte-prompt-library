@@ -1,0 +1,132 @@
+
+
+=== Prompt 1 ===
+{
+  “ar”: “4:5”,
+  “subject”: {
+    “type”: “adult woman”,
+    “…
+📅 Sun Feb 08 14:59:18 +0000 2026
+🔗 https://x.com/Noira_exe/status/2020512771155112444
+──────────────────────────────────────────────────
+
+@Noira_exe (Noira):
+Soft light, strong presence. 👩🏼‍🦳
+
+Gemini Nano Banana Pro 
+
+{
+  “ar”: “4:5”,
+  “subject”: {
+    “type”: “adult woman”,
+    “age”: “mid-20s”,
+    “character_outline”: “naturally curvy and voluptuous figure with a slender waist and significantly enlarged, prominent hips and full, rounded glutes; beautiful, natural skin with soft, realistic texture and a healthy bronzed glow; genuinely beautiful with soft features and a confident, natural allure”,
+    “hair”: “sleek, shoulder-length platinum blonde bob, naturally styled”,
+    “expression”: “calm, confident, sultrily looking directly at the camera, hand thoughtfully on chin”
+  },
+  “wardrobe”: {
+    “lingerie”: {
+      “type”: “black lace lingerie set”,
+      “bra”: “delicate black floral lace bralette with thin straps”
+...
+
+=== Prompt 2 ===
+{
+  “ar”: “4:5”,
+  “subject”: {
+    “type”: “adult woman”,
+    “age”: “early 20s”,…
+📅 Sat Feb 07 20:32:02 +0000 2026
+🔗 https://x.com/Noira_exe/status/2020234116722217469
+──────────────────────────────────────────────────
+
+@Noira_exe (Noira):
+Caught on flash. 📸✨
+
+Nano Banana Pro 
+
+{
+  “ar”: “4:5”,
+  “subject”: {
+    “type”: “adult woman”,
+    “age”: “early 20s”,
+    “character_outline”: “slim yet curvaceous build, with particular emphasis on the toned legs and defined waistline accentuated by the pose and attire; long dark brown hair with distinct blunt bangs”,
+    “expression”: “pouty, alluring gaze directed intently at the camera”,
+    “gaze”: “direct eye contact with the camera lens”
+  },
+  “wardrobe”: {
+    “top”: “black shiny leather-look corset-style crop top with spaghetti straps”,
+    “bottoms”: “black high-waisted fishnet tights with small diamond pattern”,
+    “underwear”: “black high-waisted briefs clearly visible beneath the fishnet tights”
+  },
+“accessories”: {
+    “jewelry
+...
+
+=== Prompt 3 ===
+{
+  “ar”: “4:5”,
+  “subject”: {
+    “type”: “adult woman”,
+    “age”: “early 20s…
+📅 Fri Feb 06 21:12:57 +0000 2026
+🔗 https://x.com/Noira_exe/status/2019882026082640210
+──────────────────────────────────────────────────
+
+@Noira_exe (Noira):
+A frame from paradise. 🏖️
+
+Nano Banana Pro
+
+{
+  “ar”: “4:5”,
+  “subject”: {
+    “type”: “adult woman”,
+    “age”: “early 20s”,
+    “character_outline”: “voluptuous and curvy hourglass physique; specifically characterized by a slim waist contrasting with very wide hips, thick thighs, and prominent, round glutes; fair skin with a gentle tan”,
+    “hair”: “platinum blonde, long loose beach waves, slightly tousled and textured by the sea air”,
+    “expression”: “soft, alluring, relaxed confidence”,
+    “gaze”: “looking back over the left shoulder directly into the camera lens”
+  },
+  “wardrobe”: {
+    “bikini”: {
+      “color”: “matte black”,
+      “style”: “minimalist string bikini”,
+      “top_detail”: “triangle cup top with thin spaghetti straps”,
+   
+...
+
+=== Prompt 4 ===
+{
+  “style”: “Hyper-realistic candid smartphone photography, night flash aesthetic, high contrast, glossy magazine finish, raw and unfiltered”,
+  “aspect_ratio”: “9:16”,
+  “composition”: “Eye-level medium shot captured inside a luxury car, focusing on the subject sitting in the back seat”,
+
+  “subjects”: [
+    {
+      “identity_likeness”: “Breathtakingly beautiful young albino woman with ethereal, exotic features”,
+      “position”: “Sitting in a leather car seat, one leg bent up with the knee pulled close to the chest, hugging the knee with one arm”,
+      “body_details”: {
+        “build”: “Voluptuous hourglass figure, very large and full bust, slim waist, and curvy hips”,
+        “skin”: “Flawless, milky white porcelain skin that glows under the camera flash”
+      },
+“facial_details”: {
+        “hair”: “Long, thick platinum white hair tied in a messy high ponytail with loose strands framing the face”,
+        “eyes”: “Mesmerizing pale violet eyes with white eyelashes, looking direc
+...
+
+=== Prompt 5 ===
+{
+  “subject”: {
+    “description”: “A vertical smartphone mirror selfie of a fit young woman with long vibrant red hair in a gym.”,
+    “body”: {
+      “physique”: “She has a very pronounced, curvy figure with prominent glutes and a defined back. Her skin has a visible sheen of sweat.”,
+      “pose”: “She stands with her back turned towards the large gym mirror, looking over her shoulder at her reflection. She holds a silver smartphone in her right hand with the screen facing her (back of the phone facing the mirror), correctly capturing the selfie. Her left arm hangs naturally by her side.”,
+“features”: “Long, bright red hair reaching her mid-back. Her face is shown in profile as she looks at the phone screen in the mirror.”
+    }
+  },
+  “wardrobe”: {
+    “outfit”: “A tight-fitting, bright pink backless athletic jumpsuit (bodysuit) with a ruched detail at the lower back that accentuates her physique.”
+  },
+  “pose_action”: “Taking a post-workout mirror selfie in a gym, highlighting h
+...
