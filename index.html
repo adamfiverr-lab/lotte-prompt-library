@@ -3,529 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Manager</title>
+    <title>Lotte Prompts by Category</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #eee;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2rem; color: #667eea; font-weight: bold; }
+        .stat-label { color: #888; font-size: 0.9rem; }
         
-        :root {
-            --bg-color: #f5f5f5;
-            --card-bg: #fff;
-            --text-color: #333;
-            --header-bg: #f8f8f8;
-            --border-color: #eee;
-            --caption-bg: #f8f8f8;
-            --caption-border: #ddd;
+        .categories {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            overflow-x: auto;
+            background: rgba(0,0,0,0.2);
+        }
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            color: #ccc;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        .category-btn:hover, .category-btn.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            color: #fff;
+        }
+        .category-btn .count {
+            background: rgba(102, 126, 234, 0.5);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
         }
         
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --header-bg: #2d2d2d;
-            --border-color: #333;
-            --caption-bg: #2d2d2d;
-            --caption-border: #444;
-        }
-        
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background: var(--bg-color); 
-            color: var(--text-color);
-            padding: 20px;
-            max-width: 600px;
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
-            transition: background 0.3s, color 0.3s;
+            padding: 2rem;
         }
-        
-        h1 { 
-            text-align: center; 
-            margin-bottom: 30px; 
-            color: #e1306c;
-            font-size: 24px;
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
         }
-        
-        .post-card {
-            background: var(--card-bg);
+        .prompt-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: background 0.3s;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        
-        .post-header {
-            padding: 15px;
-            background: var(--header-bg);
-            border-bottom: 1px solid var(--border-color);
+        .prompt-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        .prompt-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 1rem;
         }
-        
-        .post-date {
+        .prompt-title {
+            color: #667eea;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 0.95rem;
         }
-        
-        .post-trend {
-            background: #e1306c;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+        .prompt-category {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #667eea;
         }
-        
-        .image-container {
-            max-width: 300px;
-            margin: 20px auto;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        
-        .btn:hover {
-            opacity: 0.8;
-        }
-        
-        .btn-instagram {
-            background: #e1306c;
-            color: white;
-        }
-        
-        .btn-x {
-            background: #000;
-            color: white;
-        }
-        
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .tab {
-            flex: 1;
-            padding: 15px;
-            background: var(--header-bg);
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.2s;
-        }
-        
-        [data-theme="dark"] .tab {
+        .prompt-preview {
             color: #aaa;
-        }
-        
-        .tab.active {
-            background: var(--card-bg);
-            color: #e1306c;
-            border-bottom: 2px solid #e1306c;
-        }
-        
-        .tab-content {
-            display: none;
-            padding: 15px;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .caption-box {
-            background: var(--caption-bg);
-            border: 1px solid var(--caption-border);
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 14px;
+            font-size: 0.85rem;
             line-height: 1.5;
-            white-space: pre-wrap;
-            margin-bottom: 10px;
-        }
-        
-        .copy-btn {
-            background: #0095f6;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
-            width: 100%;
-        }
-        
-        .copy-btn:hover {
-            background: #0077c2;
-        }
-        
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 12px 24px;
+            max-height: 150px;
+            overflow: hidden;
+            font-family: monospace;
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
             border-radius: 8px;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 100;
+            white-space: pre-wrap;
         }
-        
-        .toast.show {
-            opacity: 1;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .modal.active { display: block; }
+        .modal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: none; border: none;
+            color: #888; font-size: 2rem;
+            cursor: pointer;
+        }
+        .full-prompt {
+            background: rgba(0,0,0,0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #ddd;
+            white-space: pre-wrap;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .copy-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <h1 style="margin: 0;">Post Manager</h1>
-        <span onclick="toggleDarkMode()" id="theme-toggle" style="cursor: pointer; font-size: 18px;">🌙</span>
+    <div class="header">
+        <h1>🎨 Lotte Prompts by Category</h1>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">237</div>
+                <div class="stat-label">Total Prompts</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
     </div>
     
-    <div id="posts"></div>
+    <div class="categories">
+        <button class="category-btn active" onclick="showCategory('all')">
+            All <span class="count">237</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('lingerie')">
+            Lingerie & Intimate <span class="count">212</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('bedroom')">
+            Bedroom & Morning <span class="count">9</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('outfits')">
+            Outfits & Costumes <span class="count">6</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('bathroom')">
+            Bathroom & Shower <span class="count">5</span>
+        </button>
+        <button class="category-btn" onclick="showCategory('other')">
+            Other <span class="count">5</span>
+        </button>
+    </div>
     
-    <div class="toast" id="toast">Copied!</div>
+    <div class="container">
+        <div class="prompts-grid" id="prompts-grid">
+            <!-- Prompts will be loaded here -->
+        </div>
+    </div>
     
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 style="color: #667eea; margin-bottom: 1rem;">Full Prompt</h2>
+            <pre class="full-prompt" id="full-prompt"></pre>
+            <button class="copy-btn" onclick="copyPrompt()">📋 Copy to Clipboard</button>
+        </div>
+    </div>
+
     <script>
-        // Posts array - newest first
-        const posts = [
-{
-            date: '2026-02-09',
-            trend: 'Mirror Monday',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-09-100023.jpg',
-            filename: 'lotte-2026-02-09-100023.jpg',
-            instagram: `Flash on 📸
-
-Movie night! 🍿 What should I watch?
-
-Starting the week strong 💕
-
-What are your Monday plans? 👇
-
-#MirrorMonday #OOTD #WeekendVibes`,
-            fanvue: `Monday motivation 😈💋
-
-Movie night! 🍿 What should I watch? got a little spicy...
-
-Let's just say I'm not wearing much under this 😏
-
-Full view on my page 💕`,
-        },
-{
-            date: '2026-02-09',
-            trend: 'Three-Tier: SFW',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/2026-02-09-lingerie.png',
-            filename: '2026-02-09-lingerie.png',
-            instagram: `Three-tier system test ✨ Lingerie version`,
-            fanvue: `Lingerie set - see nude version in premium 💦`,
-        },
-        {
-            date: '2026-02-09',
-            trend: 'Three-Tier: NUDE 🔞',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/2026-02-09-nude.png',
-            filename: '2026-02-09-nude.png',
-            instagram: `Premium only 🔞 Full nude set`,
-            fanvue: `Full nude set - completely uncensored 😈💋`,
-        },
-{
-            date: '2026-02-08',
-            trend: 'Daily Post - SFW',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/2026-02-08-base.png',
-            filename: '2026-02-08-base.png',
-            instagram: `Lazy Sunday ✨
-
-No makeup, no problem 💕
-
-See the exclusive version on Fanvue 👇
-
-#SelfieSunday #NoFilter #LotteAI`,
-            fanvue: `Lazy Sunday... without the clothes 😈
-
-See the full explicit set on my Fanvue 💦
-
-Link in bio 💋`,
-        },
-{
-            date: '2026-02-08',
-            trend: 'Daily Post - EXPLICIT 🔞',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/2026-02-08-explicit.png',
-            filename: '2026-02-08-explicit.png',
-            instagram: `EXCLUSIVE CONTENT 🔞
-
-Full uncensored set on Fanvue only 💦
-
-Link in bio 👇`,
-            fanvue: `Sunday funday, completely uncensored 😈
-
-Full nude set - enjoy the view 💋
-
-Exclusive for you 💕`,
-        },
-{
-            date: '2026-01-12',
-            trend: 'Pool Day',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-pool-jan12.jpg',
-            filename: 'lotte-pool-jan12.jpg',
-            instagram: `Don't look at me like that. Or do... 😏
-
-Pool days hit different 
-
-#PoolDay #SummerVibes #LotteAI`,
-            fanvue: `Don't look at me like that. Or do... 💋
-
-Full pool set on Fanvue
-
-Link in bio 🔥`,
-        },
-{
-            date: '2026-02-08',
-            trend: 'Getting Ready 💃',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-08-112419.jpg',
-            filename: 'lotte-2026-02-08-112419.jpg',
-            instagram: `Getting ready for tonight ✨
-
-Outfit check in the mirror 💕
-
-Who's coming out? 👇
-
-#GettingReady #OOTN #SaturdayNight #MirrorSelfie #WeekendVibes`,
-            fanvue: `Getting ready for tonight 😈
-
-This outfit won't stay on long... 💦
-
-See you there? 💋
-
-Much more on my page 💕`,
-        },
-{
-            date: '2026-02-08',
-            trend: 'Selfie Sunday',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-08.jpg',
-            filename: 'lotte-2026-02-08.jpg',
-            instagram: `Lazy Sunday selfies 📸💕
-
-No makeup, no problem ✨
-
-How's your Sunday going? 👇
-
-#SelfieSunday #NoFilter #Relatable`,
-            fanvue: `Sunday funday in bed 😈
-
-No makeup, no clothes, no problem 💦
-
-Wish you were here to lazy around with me 😏
-
-Much more comfortable on my page 💕`,
-        },{
-            date: '2026-02-08',
-            trend: 'Concert Night 🎵',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-08-concert.jpg',
-            filename: 'lotte-2026-02-08-concert.jpg',
-            instagram: `Concert night! 🎵✨
-
-Live music hits different 😈
-
-Flash on, vibes high 📸
-
-Best night ever! 👇
-
-#ConcertNight #LiveMusic #NightOut #WeekendVibes #OOTN`,
-            fanvue: `Concert got wild 😈💋
-
-You should have seen what happened backstage... 💦
-
-Let's just say the outfit didn't stay on long 😏
-
-The after party was even better 💕`,
-        },
-        {
-            date: '2026-02-08',
-            trend: 'Selfie Sunday',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-08.jpg',
-            filename: 'lotte-2026-02-08.jpg',
-            instagram: `Sunday night reflection ✨💭
-
-Blazer dress kind of night 😈
-
-Sometimes you just need to dress up and feel yourself 💕
-
-How was your weekend? 👇
-
-#SelfieSunday #OOTN #BlazerDress #NightOut #WeekendVibes`,
-            fanvue: `Sunday funday in my favorite blazer 😈💋
-
-No pants, no problem 💦
-
-Just the blazer and my confidence 😏
-
-Wish you were here to see the full view 💕`,
-        },
-        {
-            date: '2026-02-07',
-            trend: 'Saturday Night',
-            image: 'https://raw.githubusercontent.com/adamfiverr-lab/lotte-viewer/main/images/lotte-2026-02-07.jpg',
-            filename: 'lotte-2026-02-07.jpg',
-            instagram: `Saturday night with the girls 💕🥂
-
-Living my best life ✨
-
-Who's coming out tonight? 👇
-
-#SaturdayNight #GirlsNight #WeekendVures #NightOut`,
-            fanvue: `Saturday night ready 😈💋
-
-You should have seen what happened 10 minutes later... 💦
-
-Let's just say the dress didn't stay on long 😏
-
-And things only got more interesting from there 💋`,
-        }];
-
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2000);
-        }
-
-        function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast('Copied to clipboard!');
-            });
-        }
-
-        function openTab(postId, tabName) {
-            document.querySelectorAll(`#post-${postId} .tab-content`).forEach(t => t.classList.remove('active'));
-            document.querySelectorAll(`#post-${postId} .tab`).forEach(t => t.classList.remove('active'));
-            document.getElementById(`tab-${postId}-${tabName}`).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function postToX(caption, postId) {
-            const encoded = encodeURIComponent(caption.substring(0, 280));
-            window.open(`https://twitter.com/intent/tweet?text=${encoded}`, '_blank');
-        }
-
-        function postToInstagram(caption, postId) {
-            copyText(caption);
-            window.open('https://instagram.com', '_blank');
-        }
-
-        async function downloadImage(url, filename, btnElement) {
-            try {
-                showToast('Downloading...');
-                const response = await fetch(url);
-                const blob = await response.blob();
-                const blobUrl = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = blobUrl;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(blobUrl);
-                showToast('Image saved!');
-            } catch (e) {
-                showToast('Download failed - try right-click save');
-                window.open(url, '_blank');
+        // Sample prompts data - in production this would be loaded from JSON
+        const promptsData = [
+            {
+                id: "1",
+                category: "Lingerie & Intimate",
+                title: "sleepy eyes, messy hair, bad intentions",
+                preview: "{ \"meta\": { \"quality\": \"ultra photorealistic\", \"scene\": {\"location\": \"bedroom window\"} } }",
+                full: "sleepy eyes, messy hair, bad intentions.\n\nNano Banana Pro\n\n{ \"meta\": { \"quality\": \"ultra photorealistic\", \"resolution\": \"8k\" } }"
+            },
+            {
+                id: "2",
+                category: "Bathroom & Shower",
+                title: "just me & my thoughts",
+                preview: "{ \"meta\": { \"scene\": {\"location\": \"apartment bathroom\"} } }",
+                full: "just me & my thoughts.\n\nNano Banana Pro\n\n{ \"meta\": { \"quality\": \"ultra photorealistic\" } }"
             }
-        }
-
-        function toggleDarkMode() {
-            const body = document.body;
-            const toggle = document.getElementById('theme-toggle');
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            
-            if (isDark) {
-                body.removeAttribute('data-theme');
-                toggle.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                toggle.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const toggle = document.getElementById('theme-toggle');
-            if (savedTheme === 'dark') {
-                document.body.setAttribute('data-theme', 'dark');
-                toggle.textContent = '☀️';
-            }
-        }
-
-        function renderPosts() {
-            const container = document.getElementById('posts');
-            
-            // Sort posts by date (most recent first)
-            const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            container.innerHTML = sortedPosts.map((post, index) => `
-                <div class="post-card" id="post-${index}">
-                    <div class="post-header">
-                        <span class="post-date">${post.date}</span>
-                        <button onclick="downloadImage('${post.image}', '${post.filename}', this)" style="background: none; border: none; color: #0095f6; font-size: 12px; cursor: pointer; font-weight: 600;">💾 Save</button>
-                        <span class="post-trend">${post.trend}</span>
+        ];
+        
+        let currentPrompt = '';
+        
+        function loadPrompts() {
+            const grid = document.getElementById('prompts-grid');
+            grid.innerHTML = promptsData.map(p => `
+                <div class="prompt-card" onclick="showPrompt('${p.id}')">
+                    <div class="prompt-header">
+                        <div class="prompt-title">${p.title}</div>
+                        <div class="prompt-category">${p.category}</div>
                     </div>
-                    
-                    <div class="image-container">
-                        <img src="${post.image}" alt="${post.date}" onerror="this.src='https://via.placeholder.com/300x400?text=Image'">
-                    </div>
-                    
-                    <div class="action-buttons">
-                        <button class="btn btn-instagram" onclick="postToInstagram(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">📸 Post to Instagram</button>
-                        <button class="btn btn-x" onclick="postToX(\`${post.instagram.replace(/`/g, '\\`')}\`, ${index})">𝕏 Post to X</button>
-                    </div>
-                    
-                    <div class="tabs">
-                        <button class="tab active" onclick="openTab(${index}, 'instagram')">📸 Instagram Caption</button>
-                        <button class="tab" onclick="openTab(${index}, 'fanvue')">💋 Fanvue Caption</button>
-                    </div>
-                    
-                    <div id="tab-${index}-instagram" class="tab-content active">
-                        <div class="caption-box">${post.instagram}</div>
-                        <button class="copy-btn" onclick="copyText(\`${post.instagram.replace(/`/g, '\\`')}\`)">📋 Copy Instagram Caption</button>
-                    </div>
-                    
-                    <div id="tab-${index}-fanvue" class="tab-content">
-                        <div class="caption-box">${post.fanvue}</div>
-                        <button class="copy-btn" onclick="copyText(\`${post.fanvue.replace(/`/g, '\\`')}\`)">📋 Copy Fanvue Caption</button>
-                    </div>
+                    <div class="prompt-preview">${p.preview}</div>
                 </div>
             `).join('');
         }
-
-        renderPosts();
-        loadTheme();
+        
+        function showPrompt(id) {
+            const prompt = promptsData.find(p => p.id === id);
+            if (prompt) {
+                currentPrompt = prompt.full;
+                document.getElementById('full-prompt').textContent = prompt.full;
+                document.getElementById('modal').classList.add('active');
+            }
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+        
+        function copyPrompt() {
+            navigator.clipboard.writeText(currentPrompt);
+            alert('Prompt copied!');
+        }
+        
+        function showCategory(cat) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            // Filter logic would go here
+        }
+        
+        // Load on start
+        loadPrompts();
     </script>
 </body>
 </html>
