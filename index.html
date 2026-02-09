@@ -68,6 +68,24 @@
             border-color: #667eea;
             color: #fff;
         }
+        .search-container {
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 1rem;
+        }
+        .search-box::placeholder {
+            color: #888;
+        }
         .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
         .loading {
             text-align: center;
@@ -198,6 +216,10 @@
         <button class="category-btn" onclick="filterCategory('Other')">Other</button>
     </div>
     
+    <div class="search-container" id="search-container" style="display:none;">
+        <input type="text" class="search-box" id="search-input" placeholder="🔍 Search prompts..." onkeyup="searchPrompts()">
+    </div>
+    
     <div class="container" id="container">
         <div class="loading">
             <div class="loading-spinner"></div>
@@ -266,6 +288,7 @@
 
                 document.getElementById('total-count').textContent = allPrompts.length;
                 document.getElementById('categories').style.display = 'flex';
+                document.getElementById('search-container').style.display = 'block';
                 document.getElementById('progress').style.width = '100%';
                 
                 // Render in batches for better performance
@@ -331,6 +354,31 @@
                 const filtered = allPrompts.filter(p => p.category === category);
                 renderBatched(filtered);
             }
+            // Clear search when changing categories
+            document.getElementById('search-input').value = '';
+        }
+
+        function searchPrompts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const activeCategory = document.querySelector('.category-btn.active').textContent;
+            
+            let promptsToSearch = allPrompts;
+            if (activeCategory !== 'All') {
+                promptsToSearch = allPrompts.filter(p => p.category.includes(activeCategory.split(' ')[0]));
+            }
+            
+            if (query === '') {
+                renderBatched(promptsToSearch);
+                return;
+            }
+            
+            const filtered = promptsToSearch.filter(p => 
+                p.title.toLowerCase().includes(query) ||
+                p.fullText.toLowerCase().includes(query) ||
+                p.category.toLowerCase().includes(query)
+            );
+            
+            renderBatched(filtered);
         }
 
         function openModal(id) {
