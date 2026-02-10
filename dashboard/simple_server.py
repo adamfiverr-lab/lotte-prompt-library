@@ -17,6 +17,8 @@ PORT = 8081
 DB_PATH = Path(__file__).parent / 'dashboard.db'
 
 class DashboardHandler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=str(Path(__file__).parent), **kwargs)
     def do_GET(self):
         parsed = urlparse(self.path)
         
