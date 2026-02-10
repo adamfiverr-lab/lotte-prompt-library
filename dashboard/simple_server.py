@@ -84,19 +84,23 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
         data = json.loads(body)
         tier = data.get('tier', 'all')
         
-        conn = sqlite3.connect(DB_PATH)
-        c = conn.cursor()
-        tiers = ['SFW', 'Suggestive', 'NSFW'] if tier == 'all' else [tier]
-        for t in tiers:
-            c.execute('INSERT INTO generation_logs (tier, status) VALUES (?, ?)',
-                      (t, 'pending'))
-        conn.commit()
-        conn.close()
+        # Run in background thread so HTTP response returns immediately
+        def run_in_background():
+            try:
+                results = run_generation(tier)
+                print(f"Generation complete: {results}")
+            except Exception as e:
+                print(f"Generation error: {e}")
         
+        thread = threading.Thread(target=run_in_background)
+        thread.daemon = True
+        thread.start()
+        
+        # Return immediately
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
-        self.wfile.write(json.dumps({'status': 'started', 'tiers': tiers}).encode())
+        self.wfile.write(json.dumps({'status': 'started', 'message': 'Generation running in background. Check logs for progress.'}).encode())
     
     def load_settings(self):
         conn = sqlite3.connect(DB_PATH)
