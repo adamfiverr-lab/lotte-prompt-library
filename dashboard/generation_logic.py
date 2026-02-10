@@ -16,6 +16,30 @@ REPLICATE_API_TOKEN = "YOUR_REPLICATE_TOKEN"  # From settings
 ATLAS_API_KEY = "YOUR_ATLAS_API_KEY"  # From settings
 REFERENCE_IMAGE = "https://your-reference-image-url.jpg"
 
+
+def upload_to_drive(local_path, remote_path):
+    """Upload file to Google Drive using rclone"""
+    import subprocess
+    import os
+    
+    try:
+        result = subprocess.run(
+            ['rclone', 'copy', local_path, f'agent:{remote_path}'],
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+        
+        if result.returncode == 0:
+            print(f"✅ Uploaded to Drive: {remote_path}")
+            return True
+        else:
+            print(f"❌ Upload failed: {result.stderr}")
+            return False
+    except Exception as e:
+        print(f"❌ Upload error: {e}")
+        return False
+
 LINGERIE_STYLES = [
     "sheer black lace lingerie",
     "red satin bodysuit", 
