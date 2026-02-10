@@ -231,6 +231,8 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
         
         <div class="card">
             <h2>Manual Generate</h2>
+            <button onclick="stopServer()">Stop Server</button>
+            <button onclick="restartServer()">Restart Server</button>
             <button onclick="generate('all')">Generate All Tiers</button>
             <button onclick="generate('SFW')">Generate SFW Only</button>
             <button onclick="generate('NSFW')">Generate NSFW Only</button>
@@ -264,6 +266,18 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
             }});
         }}
         
+        function stopServer() {
+            fetch("/api/stop", {method: "POST"})
+            .then(r => r.json())
+            .then(data => alert("Server stopping... Refresh page to start again"));
+        }
+        
+        function restartServer() {
+            fetch("/api/restart", {method: "POST"})
+            .then(r => r.json())
+            .then(data => alert("Server restarting... Wait 3 seconds and refresh"));
+        }
+
         function generate(tier) {{
             fetch('/api/generate', {{
                 method: 'POST',
@@ -324,3 +338,34 @@ if __name__ == '__main__':
         print(f"Lotte Dashboard running at http://localhost:{PORT}")
         print("Press Ctrl+C to stop")
         httpd.serve_forever()
+
+@app.route('/api/restart', methods=['POST'])
+def restart_server():
+    """Restart the server"""
+    import os
+    import sys
+    import time
+    
+    def restart():
+        time.sleep(1)
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+    
+    import threading
+    threading.Thread(target=restart).start()
+    
+    return jsonify({'status': 'restarting'})
+
+@app.route('/api/stop', methods=['POST'])
+def stop_server():
+    """Stop the server"""
+    import sys
+    import time
+    
+    def shutdown():
+        time.sleep(1)
+        sys.exit(0)
+    
+    import threading
+    threading.Thread(target=shutdown).start()
+    
+    return jsonify({'status': 'stopping'})
