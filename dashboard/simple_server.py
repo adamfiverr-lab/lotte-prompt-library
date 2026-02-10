@@ -233,6 +233,13 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
                 <span>Google Drive</span>
                 {toggle('google_drive_enabled', settings.get('google_drive_enabled'))}
             </div>
+            <div class="row">
+                <span>Random Mode</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="random_mode" {% if settings.random_mode == "true" %}checked{% endif %}>
+                    <span class="slider"></span>
+                </label>
+            </div>
         </div>
         
         <div class="card">
@@ -331,7 +338,9 @@ def init_db():
         ('sfw_enabled', 'true'),
         ('suggestive_enabled', 'true'),
         ('nsfw_enabled', 'true'),
-        ('google_drive_enabled', 'true')
+        ('google_drive_enabled', 'true'),
+        ('random_mode', 'true'),
+        ('custom_scenarios', '')
     ]
     c.executemany('INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)', defaults)
     conn.commit()

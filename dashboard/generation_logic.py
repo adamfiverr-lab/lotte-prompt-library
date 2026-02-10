@@ -174,7 +174,9 @@ def run_generation(tier='all'):
     # Step 1: Always generate SFW base (needed for variants)
     if sfw_enabled or lingerie_enabled or nude_enabled:
         print("=== Step 1: Generating SFW Base ===")
-        base_image = generate_sfw_base()
+        random_mode = settings.get('random_mode', 'true') == 'true'
+        custom_scenarios = settings.get('custom_scenarios', '')
+        base_image = generate_sfw_base(random_mode, custom_scenarios)
         results['SFW'] = base_image
     
     # Step 2: Generate Lingerie (if enabled)
