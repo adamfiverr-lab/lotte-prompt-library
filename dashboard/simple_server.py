@@ -266,17 +266,17 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
             }});
         }}
         
-        function stopServer() {
-            fetch("/api/stop", {method: "POST"})
+        function stopServer() {{
+            fetch("/api/stop", {{method: "POST"}})
             .then(r => r.json())
             .then(data => alert("Server stopping... Refresh page to start again"));
-        }
+        }}
         
-        function restartServer() {
-            fetch("/api/restart", {method: "POST"})
+        function restartServer() {{
+            fetch("/api/restart", {{method: "POST"}})
             .then(r => r.json())
             .then(data => alert("Server restarting... Wait 3 seconds and refresh"));
-        }
+        }}
 
         function generate(tier) {{
             fetch('/api/generate', {{
