@@ -63,10 +63,59 @@ def generate_sfw_base():
     import random
     
     scenarios = [
+        # Home/Intimate
         "bedroom mirror selfie",
         "morning coffee in bed",
         "getting ready routine",
-        "cozy evening at home"
+        "cozy evening at home",
+        "making the bed",
+        "brushing hair in front of mirror",
+        "reading a book by window light",
+        "stretching after waking up",
+        "picking an outfit from closet",
+        "applying skincare routine",
+        "lounging in oversized hoodie",
+        "tidying up the room",
+        "looking out the window",
+        "sitting on floor with laptop",
+        
+        # Selfies
+        "car selfie",
+        "bathroom selfie",
+        "mirror selfie at home",
+        "close-up face selfie",
+        "overhead angle selfie",
+        "natural light selfie",
+        
+        # Events/Concerts
+        "at a music concert",
+        "festival vibes",
+        "night out with friends",
+        "club bathroom mirror",
+        "before heading out",
+        "getting ready to party",
+        "after party glow",
+        "concert crowd background",
+        
+        # Candid/Street
+        "walking down the street",
+        "waiting for coffee",
+        "sitting at cafe",
+        "shopping trip",
+        "elevator selfie",
+        "stairwell photo",
+        "parking garage",
+        "hotel hallway",
+        
+        # Outdoor
+        "park bench relaxing",
+        "beach sunset",
+        "poolside lounging",
+        "balcony view",
+        "rooftop vibes",
+        "garden setting",
+        "picnic in the park",
+        "street style candid"
     ]
     scenario = random.choice(scenarios)
     
