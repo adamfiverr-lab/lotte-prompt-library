@@ -1,0 +1,62 @@
+{
+  "name": "Lotte Daily Flow - Simple",
+  "description": "Three-tier posting workflow for Lotte AI influencer",
+  "trigger": {
+    "type": "schedule",
+    "cron": "0 10 * * *"
+  },
+  "steps": [
+    {
+      "name": "Select Style",
+      "type": "code",
+      "description": "Randomly select lingerie style from 15 options"
+    },
+    {
+      "name": "Generate SFW",
+      "type": "http",
+      "model": "FLUX.1-schnell",
+      "prompt": "{style} lingerie, photorealistic, 8k, iPhone selfie"
+    },
+    {
+      "name": "Generate Suggestive", 
+      "type": "http",
+      "model": "Wan2.1",
+      "prompt": "{style} lingerie, suggestive pose, photorealistic"
+    },
+    {
+      "name": "Generate NSFW",
+      "type": "http", 
+      "model": "Wan2.1",
+      "prompt": "remove all clothing, same pose, photorealistic"
+    },
+    {
+      "name": "Create Captions",
+      "type": "code",
+      "description": "Generate tier-appropriate captions"
+    },
+    {
+      "name": "Post Instagram",
+      "type": "http",
+      "platform": "instagram",
+      "content": "SFW tier only"
+    },
+    {
+      "name": "Post Twitter", 
+      "type": "http",
+      "platform": "twitter",
+      "content": "SFW + Suggestive"
+    },
+    {
+      "name": "Post Fanvue",
+      "type": "http",
+      "platform": "fanvue", 
+      "content": "All tiers - subscribers only"
+    }
+  ],
+  "config": {
+    "together_api_key": "YOUR_TOGETHER_API_KEY",
+    "instagram_token": "YOUR_INSTAGRAM_TOKEN",
+    "twitter_credentials": "YOUR_TWITTER_CREDENTIALS",
+    "fanvue_api_key": "YOUR_FANVUE_API_KEY"
+  }
+}

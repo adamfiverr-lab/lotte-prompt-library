@@ -1,0 +1,197 @@
+{
+  "name": "Lotte Daily Posting Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "name": "Daily Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate random lingerie style\nconst styles = [\n  'sheer black lace',\n  'red satin',\n  'white cotton',\n  'crotchless',\n  'fishnet',\n  'leather harness',\n  'schoolgirl skirt',\n  'maid outfit',\n  'nurse uniform',\n  'bunny girl',\n  'corset',\n  'bodysuit',\n  'garter belt',\n  'silk robe',\n  'micro bikini'\n];\n\nconst selectedStyle = styles[Math.floor(Math.random() * styles.length)];\n\nreturn [{\n  json: {\n    style: selectedStyle,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "name": "Select Style",
+      "type": "n8n-nodes-base.code",
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.together.xyz/v1/images/generations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "model": "black-forest-labs/FLUX.1-schnell",
+          "prompt": "={{ $json.style }} lingerie, photorealistic, 8k, iPhone selfie style, natural lighting, bedroom setting",
+          "width": 1024,
+          "height": 1024,
+          "steps": 4,
+          "n": 3
+        },
+        "options": {}
+      },
+      "name": "Generate SFW Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [650, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.together.xyz/v1/images/generations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "model": "Wan-AI/Wan2.1-T2V-14B",
+          "prompt": "={{ $json.style }} lingerie, suggestive pose, photorealistic, 8k, iPhone selfie, bedroom",
+          "width": 1024,
+          "height": 1024,
+          "steps": 4,
+          "n": 3
+        }
+      },
+      "name": "Generate Suggestive Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.together.xyz/v1/images/generations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "model": "Wan-AI/Wan2.1-T2V-14B",
+          "prompt": "remove all clothing, same pose, {{ $json.style }} removed, photorealistic, 8k, iPhone selfie",
+          "width": 1024,
+          "height": 1024,
+          "steps": 4,
+          "n": 3
+        }
+      },
+      "name": "Generate NSFW Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [650, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate SFW caption\nconst captions = [\n  'Good morning sunshine ☀️',\n  'Casual day in',\n  'Feeling cute today',\n  'Lazy Sunday vibes',\n  'Just me being me'\n];\n\nreturn [{\n  json: {\n    tier: 'SFW',\n    caption: captions[Math.floor(Math.random() * captions.length)],\n    hashtags: '#goodmorning #aesthetic #portrait #photography #lotte'\n  }\n}];"
+      },
+      "name": "Create SFW Caption",
+      "type": "n8n-nodes-base.code",
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate suggestive caption\nconst captions = [\n  'Not wearing much today 😏',\n  'A little tease for your timeline',\n  'Should I post more like this?',\n  'Feeling bold today',\n  'This angle tho 🔥'\n];\n\nreturn [{\n  json: {\n    tier: 'Suggestive',\n    caption: captions[Math.floor(Math.random() * captions.length)],\n    hashtags: '#lingerie #suggestive #spicy #tease #lotte'\n  }\n}];"
+      },
+      "name": "Create Suggestive Caption",
+      "type": "n8n-nodes-base.code",
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate NSFW caption\nconst captions = [\n  'All natural 😈',\n  'No clothes needed',\n  'Raw and uncut',\n  'See everything on my Fanvue',\n  'Too hot for IG 🔥'\n];\n\nreturn [{\n  json: {\n    tier: 'NSFW',\n    caption: captions[Math.floor(Math.random() * captions.length)],\n    hashtags: '#nsfw #adult #spicy #uncensored #lotte'\n  }\n}];"
+      },
+      "name": "Create NSFW Caption",
+      "type": "n8n-nodes-base.code",
+      "position": [850, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.instagram.com/me/media",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "image_url": "={{ $json.image_url }}",
+          "caption": "={{ $json.caption }}\n\n{{ $json.hashtags }}"
+        }
+      },
+      "name": "Post to Instagram",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [1050, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.twitter.com/2/tweets",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "text": "={{ $json.caption }}"
+        }
+      },
+      "name": "Post to Twitter",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.fanvue.com/v1/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "media": "={{ $json.image_url }}",
+          "text": "={{ $json.caption }}",
+          "visibility": "subscribers"
+        }
+      },
+      "name": "Post to Fanvue",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [1050, 400]
+    },
+    {
+      "parameters": {
+        "fromEmail": "lotte@example.com",
+        "toEmail": "admin@example.com",
+        "subject": "Lotte Daily Post Complete",
+        "text": "={{ JSON.stringify($json, null, 2) }}",
+        "options": {}
+      },
+      "name": "Send Confirmation",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "Daily Trigger": {
+      "main": [[{"node": "Select Style", "type": "main", "index": 0}]]
+    },
+    "Select Style": {
+      "main": [
+        [{"node": "Generate SFW Image", "type": "main", "index": 0}],
+        [{"node": "Generate Suggestive Image", "type": "main", "index": 0}],
+        [{"node": "Generate NSFW Image", "type": "main", "index": 0}]
+      ]
+    },
+    "Generate SFW Image": {
+      "main": [[{"node": "Create SFW Caption", "type": "main", "index": 0}]]
+    },
+    "Generate Suggestive Image": {
+      "main": [[{"node": "Create Suggestive Caption", "type": "main", "index": 0}]]
+    },
+    "Generate NSFW Image": {
+      "main": [[{"node": "
